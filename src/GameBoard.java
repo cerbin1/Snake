@@ -12,14 +12,15 @@ class GameBoard {
     private JFrame createJFrame() {
         JFrame frame = new JFrame();
         frame.setSize(300, 300);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         return frame;
     }
 
     private JPanel createJPanel() {
         JPanel jPanel = new JPanel();
-        jPanel.setSize(30, 40);
-        jPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        jPanel.setBorder(BorderFactory.createLineBorder(Color.black, 10));
         return jPanel;
     }
 }
