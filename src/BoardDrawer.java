@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Board extends JComponent{
+public class BoardDrawer extends JComponent{
     public void paint(Graphics g) {
         g.drawRect(0, 0, 400, 400);
         g.setColor(Color.gray);

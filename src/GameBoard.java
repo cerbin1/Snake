@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 class GameBoard {
 
@@ -26,7 +24,7 @@ class GameBoard {
         jPanel.setLayout(new BorderLayout());
         jPanel.setSize(new Dimension(400, 400));
         jPanel.setBorder(BorderFactory.createLineBorder(Color.black, 10));
-        jPanel.add(new Board(), BorderLayout.CENTER);
+        jPanel.add(new BoardDrawer(), BorderLayout.CENTER);
         return jPanel;
     }
 }
