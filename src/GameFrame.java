@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-class GameBoard {
+class GameFrame {
 
-    void displayGameBoard() {
+    void displayGameFrame() {
         JFrame frame = createJFrame();
         JPanel jPanel = createJPanel();
         frame.add(jPanel);
