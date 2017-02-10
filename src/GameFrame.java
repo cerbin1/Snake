@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 class GameFrame {
 
     void displayGameFrame() {
@@ -12,7 +14,7 @@ class GameFrame {
     private JFrame createJFrame() {
         JFrame frame = new JFrame();
         frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
