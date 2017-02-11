@@ -3,27 +3,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
 class GameFrame {
     private int x = 10, y = 10;
 
-    void displayGameFrame() {
-        JFrame frame = createJFrame();
-        frame.setContentPane(createJPanel());
-    }
-
-    private JFrame createJFrame() {
-        JFrame frame = new JFrame();
-        frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        return frame;
-    }
-
-    private JPanel createJPanel() {
+    JPanel createJPanel() {
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BorderLayout());
         jPanel.setSize(new Dimension(400, 400));
