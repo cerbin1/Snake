@@ -1,3 +1,5 @@
+package snake;
+
 class Head {
 
     private int x, y;
