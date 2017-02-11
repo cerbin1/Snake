@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class Application implements ActionListener{
+public class Application implements ActionListener {
     private JPanel jPanel;
     private Head head;
 

@@ -4,7 +4,7 @@ import java.awt.*;
 class Board extends JComponent {
     private int x, y;
 
-    static int color = 0;
+    private static int color = 0;
 
     Board(int x, int y) {
         this.x = x;
