@@ -40,7 +40,6 @@ public class Application implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("dupa");
         jPanel.removeAll();
-        head.setY(head.getY() + 5);
         jPanel.add(new Board(head.getX(), head.getY()));
         jPanel.repaint();
         jPanel.revalidate();
