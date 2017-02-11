@@ -3,11 +3,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-class GameFrame {
+class GameJPanel {
     private int x = 10, y = 10;
 
-    JPanel createJPanel() {
-        JPanel jPanel = new JPanel();
+    javax.swing.JPanel createJPanel() {
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
         jPanel.setLayout(new BorderLayout());
         jPanel.setSize(new Dimension(400, 400));
         jPanel.setBorder(BorderFactory.createLineBorder(Color.black, 10));

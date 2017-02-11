@@ -6,7 +6,7 @@ public class Application {
 
     private void displayFrame() {
         JFrame jFrame = createJFrame();
-        jFrame.add(new GameFrame().createJPanel());
+        jFrame.add(new GameJPanel().createJPanel());
     }
 
     private JFrame createJFrame() {
