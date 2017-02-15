@@ -14,16 +14,21 @@ public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Head head;
 
+    JFrame jFrame;
+
+    Timer timer;
+
+    int lengthOfTail = 5;
+
     int test = 0;
 
     ArrayList<Point> snakeParts = new ArrayList<>();
 
     Application() {
-        Timer timer = new Timer(10, this);
+        timer = new Timer(5, this);
         head = new Head(0, 0);
         jPanel = createJPanel();
-        snakeParts.add(new Point(head.getX(), head.getY()));
-        JFrame jFrame = createJFrame();
+        jFrame = createJFrame();
         jFrame.add(jPanel);
         timer.start();
     }
@@ -42,7 +47,6 @@ public class Application implements ActionListener, KeyListener {
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BorderLayout());
         jPanel.setSize(new Dimension(400, 400));
-        jPanel.setBorder(BorderFactory.createLineBorder(Color.black, 10));
         jPanel.add(new BoardAndSnakeDrawer(head.getX(), head.getY(), this), BorderLayout.CENTER);
         jPanel.setFocusable(true);
         return jPanel;
@@ -50,14 +54,19 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println(test);
+        if(test + 40 > jFrame.getHeight()) {
+            timer.stop();
+        }
         jPanel.removeAll();
         jPanel.add(new BoardAndSnakeDrawer(head.getX(), head.getY(), this));
         snakeParts.add(new Point(head.getX(), head.getY() + test));
-        snakeParts.remove(0);
         test++;
         jPanel.repaint();
         jPanel.revalidate();
-        System.out.println(snakeParts);
+        if(snakeParts.size() > lengthOfTail) {
+            snakeParts.remove(0);
+        }
     }
 
     @Override
