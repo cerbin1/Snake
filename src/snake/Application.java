@@ -43,7 +43,7 @@ public class Application implements ActionListener, KeyListener {
         jPanel.setLayout(new BorderLayout());
         jPanel.setSize(new Dimension(400, 400));
         jPanel.setBorder(BorderFactory.createLineBorder(Color.black, 10));
-        jPanel.add(new Board(head.getX(), head.getY(), this), BorderLayout.CENTER);
+        jPanel.add(new BoardAndSnakeDrawer(head.getX(), head.getY(), this), BorderLayout.CENTER);
         jPanel.setFocusable(true);
         return jPanel;
     }
@@ -51,7 +51,7 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         jPanel.removeAll();
-        jPanel.add(new Board(head.getX(), head.getY(), this));
+        jPanel.add(new BoardAndSnakeDrawer(head.getX(), head.getY(), this));
         snakeParts.add(new Point(head.getX(), head.getY() + test));
         snakeParts.remove(0);
         test++;

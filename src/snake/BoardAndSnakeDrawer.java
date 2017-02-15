@@ -3,14 +3,14 @@ package snake;
 import javax.swing.*;
 import java.awt.*;
 
-class Board extends JComponent {
+class BoardAndSnakeDrawer extends JComponent {
     private int x, y;
 
     private Application application;
 
     private static int color = 0;
 
-    Board(int x, int y, Application application) {
+    BoardAndSnakeDrawer(int x, int y, Application application) {
         this.x = x;
         this.y = y;
         this.application = application;
