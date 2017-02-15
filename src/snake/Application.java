@@ -12,7 +12,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
-    private Head head;
+    private Point head;
 
     JFrame jFrame;
 
@@ -26,7 +26,7 @@ public class Application implements ActionListener, KeyListener {
 
     Application() {
         timer = new Timer(5, this);
-        head = new Head(0, 0);
+        head = new Point(0, 0);
         jPanel = createJPanel();
         jFrame = createJFrame();
         jFrame.add(jPanel);
@@ -49,7 +49,6 @@ public class Application implements ActionListener, KeyListener {
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BorderLayout());
         jPanel.setSize(new Dimension(400, 400));
-        jPanel.add(new BoardAndSnakeDrawer(head.getX(), head.getY(), this), BorderLayout.CENTER);
         jPanel.setFocusable(true);
         return jPanel;
     }
@@ -57,16 +56,16 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(test);
-        if(test + 40 > jFrame.getHeight()) {
+        if (test + 40 > jFrame.getHeight()) {
             timer.stop();
         }
         jPanel.removeAll();
-        jPanel.add(new BoardAndSnakeDrawer(head.getX(), head.getY(), this));
-        snakeParts.add(new Point(head.getX(), head.getY() + test));
+        jPanel.add(new BoardAndSnakeDrawer(head.x, head.y, this));
+        snakeParts.add(new Point(head.x, head.y + test));
         test++;
         jPanel.repaint();
         jPanel.revalidate();
-        if(snakeParts.size() > lengthOfTail) {
+        if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
         }
     }
@@ -78,7 +77,7 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             timer.stop();
         }
     }
