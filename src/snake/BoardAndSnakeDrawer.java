@@ -31,7 +31,6 @@ class BoardAndSnakeDrawer extends JComponent {
     private void drawSnake(Graphics g) {
         for (Point point : application.snakeParts) {
             g.setColor(Color.green);
-            g.drawRect(point.x, point.y, 10, 10);
             g.fillRect(point.x, point.y, 10, 10);
         }
     }
