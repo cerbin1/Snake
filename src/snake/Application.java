@@ -40,6 +40,8 @@ public class Application implements ActionListener, KeyListener {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
+        frame.addKeyListener(this);
+        frame.setFocusable(true);
         return frame;
     }
 
@@ -76,7 +78,9 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+            timer.stop();
+        }
     }
 
     @Override
