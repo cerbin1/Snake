@@ -6,11 +6,14 @@ import java.awt.*;
 class Board extends JComponent {
     private int x, y;
 
+    private Application application;
+
     private static int color = 0;
 
-    Board(int x, int y) {
+    Board(int x, int y, Application application) {
         this.x = x;
         this.y = y;
+        this.application = application;
     }
 
     public void paint(Graphics g) {
@@ -20,6 +23,16 @@ class Board extends JComponent {
         g.drawRect(x, y, 10, 10);
         g.setColor(Color.green);
         g.fillRect(x, y, 10, 10);
+
+        drawSnake(g);
         color++;
+    }
+
+    private void drawSnake(Graphics g) {
+        for (Point point : application.snakeParts) {
+            g.setColor(Color.green);
+            g.drawRect(point.x, point.y, 10, 10);
+            g.fillRect(point.x, point.y, 10, 10);
+        }
     }
 }
