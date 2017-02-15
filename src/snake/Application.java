@@ -22,7 +22,7 @@ public class Application implements ActionListener, KeyListener {
 
     int test = 0;
 
-    ArrayList<Point> snakeParts = new ArrayList<>();
+    private ArrayList<Point> snakeParts = new ArrayList<>();
 
     Application() {
         timer = new Timer(5, this);
@@ -60,7 +60,7 @@ public class Application implements ActionListener, KeyListener {
             timer.stop();
         }
         jPanel.removeAll();
-        jPanel.add(new BoardAndSnakeDrawer(head.x, head.y, this));
+        jPanel.add(new BoardAndSnakeDrawer(head.x, head.y, snakeParts));
         snakeParts.add(new Point(head.x, head.y + test));
         test++;
         jPanel.repaint();

@@ -2,18 +2,19 @@ package snake;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 class BoardAndSnakeDrawer extends JComponent {
     private int x, y;
 
-    private Application application;
+    private ArrayList<Point> snakeParts;
 
     private static int color = 0;
 
-    BoardAndSnakeDrawer(int x, int y, Application application) {
+    BoardAndSnakeDrawer(int x, int y, ArrayList<Point> snakeParts) {
         this.x = x;
         this.y = y;
-        this.application = application;
+        this.snakeParts = snakeParts;
     }
 
     public void paint(Graphics g) {
@@ -29,7 +30,7 @@ class BoardAndSnakeDrawer extends JComponent {
     }
 
     private void drawSnake(Graphics g) {
-        for (Point point : application.snakeParts) {
+        for (Point point : snakeParts) {
             g.setColor(Color.green);
             g.fillRect(point.x, point.y, 10, 10);
         }
