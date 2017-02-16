@@ -20,8 +20,6 @@ public class Application implements ActionListener, KeyListener {
 
     private Timer timer;
 
-    private int test = 0;
-
     private ArrayList<Point> snakeParts = new ArrayList<>();
 
     private Application() {
@@ -59,7 +57,6 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(test);
         if (isHeadOutOfBoard()) {
             timer.stop();
         }
@@ -75,7 +72,6 @@ public class Application implements ActionListener, KeyListener {
             head = new Point(head.x + 1, head.y);
         }
 
-        test++;
         jPanel.repaint();
         jPanel.revalidate();
         if (snakeParts.size() > lengthOfTail) {
