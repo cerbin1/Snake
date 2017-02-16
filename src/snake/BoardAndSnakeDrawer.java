@@ -2,16 +2,16 @@ package snake;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 class BoardAndSnakeDrawer extends JComponent {
     private int x, y;
 
-    private ArrayList<Point> snakeParts;
+    private List<Point> snakeParts;
 
     private static int color = 0;
 
-    BoardAndSnakeDrawer(int x, int y, ArrayList<Point> snakeParts) {
+    BoardAndSnakeDrawer(int x, int y, List<Point> snakeParts) {
         this.x = x;
         this.y = y;
         this.snakeParts = snakeParts;
