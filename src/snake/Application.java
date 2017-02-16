@@ -25,7 +25,7 @@ public class Application implements ActionListener, KeyListener {
     private ArrayList<Point> snakeParts = new ArrayList<>();
 
     Application() {
-        timer = new Timer(5, this);
+        timer = new Timer(10, this);
         head = new Point(0, 0);
         jPanel = createJPanel();
         jFrame = createJFrame();
@@ -56,7 +56,7 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(test);
-        if (test + 40 > jFrame.getHeight()) {
+        if (test + 40 >= jFrame.getHeight()) {
             timer.stop();
         }
         jPanel.removeAll();
