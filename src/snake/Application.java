@@ -14,21 +14,17 @@ public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Point head;
 
-    JFrame jFrame;
+    private Timer timer;
 
-    Timer timer;
-
-    int lengthOfTail = 5;
-
-    int test = 0;
+    private int test = 0;
 
     private ArrayList<Point> snakeParts = new ArrayList<>();
 
-    Application() {
+    private Application() {
         timer = new Timer(10, this);
         head = new Point(0, 0);
         jPanel = createJPanel();
-        jFrame = createJFrame();
+        JFrame jFrame = createJFrame();
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();
@@ -68,6 +64,7 @@ public class Application implements ActionListener, KeyListener {
         test++;
         jPanel.repaint();
         jPanel.revalidate();
+        int lengthOfTail = 5;
         if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
         }
@@ -95,6 +92,6 @@ public class Application implements ActionListener, KeyListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Application());
+        SwingUtilities.invokeLater(Application::new);
     }
 }
