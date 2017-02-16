@@ -60,7 +60,7 @@ public class Application implements ActionListener, KeyListener {
             timer.stop();
         }
         jPanel.removeAll();
-        jPanel.add(new BoardAndSnakeDrawer(head.x, head.y, snakeParts));
+        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
         head = new Point(head.x, head.y + 1);
         test++;
         jPanel.repaint();

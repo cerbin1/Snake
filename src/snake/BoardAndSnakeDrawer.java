@@ -11,9 +11,9 @@ class BoardAndSnakeDrawer extends JComponent {
 
     private static int color = 0;
 
-    BoardAndSnakeDrawer(int x, int y, List<Point> snakeParts) {
-        this.x = x;
-        this.y = y;
+    BoardAndSnakeDrawer(Point head, List<Point> snakeParts) {
+        x = head.x;
+        y = head.y;
         this.snakeParts = snakeParts;
     }
 
