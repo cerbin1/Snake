@@ -14,6 +14,10 @@ public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Point head;
 
+    private int direction = 1;
+
+    private int lengthOfTail;
+
     private Timer timer;
 
     private int test = 0;
@@ -28,6 +32,7 @@ public class Application implements ActionListener, KeyListener {
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();
+        lengthOfTail = 5;
     }
 
     private JFrame createJFrame() {
@@ -60,11 +65,19 @@ public class Application implements ActionListener, KeyListener {
         }
         jPanel.removeAll();
         jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
-        head = new Point(head.x + 1, head.y);
+        if (direction == 1) {
+            head = new Point(head.x, head.y + 1);
+        } else if (direction == 2) {
+            head = new Point(head.x, head.y - 1);
+        } else if (direction == 3) {
+            head = new Point(head.x - 1, head.y);
+        } else if (direction == 4) {
+            head = new Point(head.x + 1, head.y);
+        }
+
         test++;
         jPanel.repaint();
         jPanel.revalidate();
-        int lengthOfTail = 5;
         if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
         }
@@ -84,6 +97,22 @@ public class Application implements ActionListener, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             timer.stop();
         }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            direction = 1;
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            direction = 2;
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            direction = 3;
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            direction = 4;
+        }
+
     }
 
     @Override
