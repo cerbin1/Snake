@@ -30,25 +30,28 @@ public class Application implements ActionListener, KeyListener {
         jPanel = createJPanel();
         jFrame = createJFrame();
         jFrame.add(jPanel);
+        jFrame.pack();
         timer.start();
     }
 
     private JFrame createJFrame() {
         JFrame frame = new JFrame();
-        frame.setSize(400, 400);
+        frame.setSize(new Dimension(400, 400));
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.setVisible(true);
         frame.addKeyListener(this);
         frame.setFocusable(true);
+        frame.setVisible(true);
         return frame;
     }
 
     private JPanel createJPanel() {
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BorderLayout());
-        jPanel.setSize(new Dimension(400, 400));
+        jPanel.setPreferredSize(new Dimension(400, 400));
+        jPanel.setMinimumSize(new Dimension(400, 400));
+        jPanel.setMaximumSize(new Dimension(400, 400));
         jPanel.setFocusable(true);
         return jPanel;
     }
@@ -56,18 +59,22 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(test);
-        if (test + 40 >= jFrame.getHeight()) {
+        if (isHeadOutOfBoard()) {
             timer.stop();
         }
         jPanel.removeAll();
         jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
-        head = new Point(head.x, head.y + 1);
+        head = new Point(head.x + 1, head.y);
         test++;
         jPanel.repaint();
         jPanel.revalidate();
         if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
         }
+    }
+
+    private boolean isHeadOutOfBoard() {
+        return (head.x + 1 >= jPanel.getWidth() - 10 || head.x + 1 <= 0) || (head.y + 1 >= jPanel.getHeight() - 10 || head.y + 1 <= 0);
     }
 
     @Override
