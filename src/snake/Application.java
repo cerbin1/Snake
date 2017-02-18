@@ -27,6 +27,7 @@ public class Application implements ActionListener, KeyListener {
         head = new Point(0, 0);
         jPanel = createJPanel();
         JFrame jFrame = createJFrame();
+        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();
@@ -57,31 +58,38 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (isHeadOutOfBoard()) {
-            timer.stop();
-        }
-        jPanel.removeAll();
+        jPanel.repaint();
         snakeParts.add(head);
-        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
+
         if (direction == 1) {
-            head = new Point(head.x, head.y + 1);
-        } else if (direction == 2) {
-            head = new Point(head.x, head.y - 1);
-        } else if (direction == 3) {
-            head = new Point(head.x - 1, head.y);
-        } else if (direction == 4) {
+            if ((head.y + 1) * 10 >= jPanel.getHeight()) {
+                timer.stop();
+            } else
+                head = new Point(head.x, head.y + 1);
+        }
+        if (direction == 2) {
+            if (head.y - 1 < 0) {
+                timer.stop();
+            } else
+                head = new Point(head.x, head.y - 1);
+        }
+        if (direction == 3) {
+            if (head.x - 1 < 0) {
+                timer.stop();
+            } else
+                head = new Point(head.x - 1, head.y);
+        }
+        if (direction == 4) {
+            if ((head.x + 1) * 10 >= jPanel.getWidth()) {
+                timer.stop();
+            } else
             head = new Point(head.x + 1, head.y);
         }
 
-        jPanel.repaint();
-        jPanel.revalidate();
         if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
         }
-    }
 
-    private boolean isHeadOutOfBoard() {
-        return (head.x + 1 >= jPanel.getWidth() - 10 || head.x + 1 <= 0) || (head.y + 1 >= jPanel.getHeight() - 10 || head.y + 1 <= 0);
     }
 
     @Override
@@ -92,7 +100,11 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            timer.stop();
+            if (timer.isRunning()) {
+                timer.stop();
+            } else {
+                timer.start();
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             direction = 1;
