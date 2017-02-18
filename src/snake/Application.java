@@ -9,12 +9,13 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import static snake.Direction.*;
 
 public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Point head;
 
-    private int direction = 1;
+    private Direction direction = DOWN;
 
     private int lengthOfTail;
 
@@ -61,29 +62,29 @@ public class Application implements ActionListener, KeyListener {
         jPanel.repaint();
         snakeParts.add(head);
 
-        if (direction == 1) {
+        if (direction == DOWN) {
             if ((head.y + 1) * 10 >= jPanel.getHeight()) {
                 timer.stop();
             } else
                 head = new Point(head.x, head.y + 1);
         }
-        if (direction == 2) {
+        if (direction == UP) {
             if (head.y - 1 < 0) {
                 timer.stop();
             } else
                 head = new Point(head.x, head.y - 1);
         }
-        if (direction == 3) {
+        if (direction == LEFT) {
             if (head.x - 1 < 0) {
                 timer.stop();
             } else
                 head = new Point(head.x - 1, head.y);
         }
-        if (direction == 4) {
+        if (direction == RIGHT) {
             if ((head.x + 1) * 10 >= jPanel.getWidth()) {
                 timer.stop();
             } else
-            head = new Point(head.x + 1, head.y);
+                head = new Point(head.x + 1, head.y);
         }
 
         if (snakeParts.size() > lengthOfTail) {
@@ -107,19 +108,19 @@ public class Application implements ActionListener, KeyListener {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            direction = 1;
+            direction = DOWN;
         }
 
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            direction = 2;
+            direction = UP;
         }
 
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            direction = 3;
+            direction = LEFT;
         }
 
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            direction = 4;
+            direction = RIGHT;
         }
 
     }
