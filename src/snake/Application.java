@@ -90,7 +90,6 @@ public class Application implements ActionListener, KeyListener {
         if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
         }
-
     }
 
     @Override
@@ -110,24 +109,19 @@ public class Application implements ActionListener, KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             direction = DOWN;
         }
-
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             direction = UP;
         }
-
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             direction = LEFT;
         }
-
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             direction = RIGHT;
         }
-
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     public static void main(String[] args) {
