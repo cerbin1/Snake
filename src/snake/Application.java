@@ -61,6 +61,7 @@ public class Application implements ActionListener, KeyListener {
             timer.stop();
         }
         jPanel.removeAll();
+        snakeParts.add(head);
         jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
         if (direction == 1) {
             head = new Point(head.x, head.y + 1);
