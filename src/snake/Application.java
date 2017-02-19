@@ -14,7 +14,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static snake.Direction.*;
 
 public class Application implements ActionListener, KeyListener {
-    private RenderPanel jPanel;
+    private RenderPanel renderPanel;
     private Point head;
 
     private Direction direction = DOWN;
@@ -30,9 +30,9 @@ public class Application implements ActionListener, KeyListener {
         timer = new Timer(50, this);
         head = new Point(0, 0);
         appleGenerator = new AppleGenerator();
-        jPanel = new RenderPanel(snakeParts, appleGenerator.getApple());
+        renderPanel = new RenderPanel(snakeParts, appleGenerator.getApple());
         JFrame jFrame = createJFrame();
-        jFrame.add(jPanel);
+        jFrame.add(renderPanel);
         jFrame.pack();
         timer.start();
         lengthOfTail = 5;
@@ -52,7 +52,7 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        jPanel.repaint();
+        renderPanel.repaint();
         System.out.println(head);
         snakeParts.add(head);
         if (direction == DOWN) {
