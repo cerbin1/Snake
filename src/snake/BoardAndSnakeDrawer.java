@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-class BoardAndSnakeDrawer extends JComponent {
+class BoardAndSnakeDrawer extends JPanel {
     private int x, y;
 
     private List<Point> snakeParts;
@@ -35,6 +35,6 @@ class BoardAndSnakeDrawer extends JComponent {
             g.fillRect(point.x * 10, point.y * 10, 10, 10);
         }
         g.setColor(Color.red);
-        g.fillRect(apple.x, apple.y, 10, 10);
+        g.fillRect(apple.x * 10, apple.y * 10, 10, 10);
     }
 }

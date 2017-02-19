@@ -16,22 +16,24 @@ public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Point head;
 
+    static Random random = new Random();
+
     private Direction direction = DOWN;
 
     private int lengthOfTail;
 
     private Timer timer;
+    Point apple;
 
     private ArrayList<Point> snakeParts = new ArrayList<>();
 
     private Application() {
-        timer = new Timer(40, this);
+        timer = new Timer(50, this);
         head = new Point(0, 0);
         jPanel = createJPanel();
         JFrame jFrame = createJFrame();
-        Random random = new Random();
-        Point cherry = new Point(random.nextInt(38), random.nextInt(38));
-        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts, cherry));
+        apple = new Point(random.nextInt(38), random.nextInt(38));
+        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts, apple));
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();
@@ -64,9 +66,8 @@ public class Application implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         jPanel.repaint();
         snakeParts.add(head);
-
         if (direction == DOWN) {
-            if ((head.y + 1) * 10 >= jPanel.getHeight()) {
+            if (head.y + 1 >= 40) {
                 timer.stop();
             } else
                 head = new Point(head.x, head.y + 1);
@@ -84,10 +85,15 @@ public class Application implements ActionListener, KeyListener {
                 head = new Point(head.x - 1, head.y);
         }
         if (direction == RIGHT) {
-            if ((head.x + 1) * 10 >= jPanel.getWidth()) {
+            if (head.x + 1 >= 40) {
                 timer.stop();
             } else
                 head = new Point(head.x + 1, head.y);
+        }
+
+        if (head.equals(apple)) {
+            lengthOfTail ++;
+            apple.setLocation(random.nextInt(38), random.nextInt(38));
         }
 
         if (snakeParts.size() > lengthOfTail) {
