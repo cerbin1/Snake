@@ -126,16 +126,16 @@ public class Application implements ActionListener, KeyListener {
                 timer.start();
             }
         }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        if (e.getKeyCode() == KeyEvent.VK_DOWN && direction != UP) {
             direction = DOWN;
         }
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
+        if (e.getKeyCode() == KeyEvent.VK_UP && direction != DOWN) {
             direction = UP;
         }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT && direction != RIGHT) {
             direction = LEFT;
         }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT && direction != LEFT) {
             direction = RIGHT;
         }
     }
