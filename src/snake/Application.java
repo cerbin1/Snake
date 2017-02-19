@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -25,7 +26,7 @@ public class Application implements ActionListener, KeyListener {
     private Timer timer;
     Point apple;
 
-    private ArrayList<Point> snakeParts = new ArrayList<>();
+    private List<Point> snakeParts = new LinkedList<>();
 
     private Application() {
         timer = new Timer(50, this);
