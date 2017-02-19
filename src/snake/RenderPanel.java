@@ -18,8 +18,6 @@ class RenderPanel extends JPanel {
         new JPanel();
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(400, 400));
-        this.setMinimumSize(new Dimension(400, 400));
-        this.setMaximumSize(new Dimension(400, 400));
     }
 
     public void paint(Graphics g) {
