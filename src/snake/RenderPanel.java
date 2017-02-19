@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-class BoardAndSnakeDrawer extends JPanel {
+class RenderPanel extends JPanel {
 
     private List<Point> snakeParts;
 
@@ -12,7 +12,7 @@ class BoardAndSnakeDrawer extends JPanel {
 
     private Point apple;
 
-    BoardAndSnakeDrawer(List<Point> snakeParts, Point apple) {
+    RenderPanel(List<Point> snakeParts, Point apple) {
         this.snakeParts = snakeParts;
         this.apple = apple;
         new JPanel();
