@@ -18,6 +18,12 @@ class BoardAndSnakeDrawer extends JPanel {
         y = head.y;
         this.snakeParts = snakeParts;
         this.apple = apple;
+        new JPanel();
+        this.setLayout(new BorderLayout());
+        this.setPreferredSize(new Dimension(400, 400));
+        this.setMinimumSize(new Dimension(400, 400));
+        this.setMaximumSize(new Dimension(400, 400));
+        this.setFocusable(true);
     }
 
     public void paint(Graphics g) {
@@ -36,5 +42,9 @@ class BoardAndSnakeDrawer extends JPanel {
         }
         g.setColor(Color.red);
         g.fillRect(apple.x * 10, apple.y * 10, 10, 10);
+    }
+
+    JPanel getPanel() {
+        return this;
     }
 }
