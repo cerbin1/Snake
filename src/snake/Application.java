@@ -53,7 +53,6 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         renderPanel.repaint();
-        System.out.println(head);
         snakeParts.add(head);
         if (direction == DOWN) {
             if (head.y + 1 >= 40 || isPartOfSnakeOnPoint(0, 1)) {
