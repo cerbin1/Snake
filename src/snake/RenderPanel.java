@@ -40,8 +40,4 @@ class RenderPanel extends JPanel {
         g.setColor(Color.red);
         g.fillRect(apple.x * 10, apple.y * 10, 10, 10);
     }
-
-    JPanel getPanel() {
-        return this;
-    }
 }
