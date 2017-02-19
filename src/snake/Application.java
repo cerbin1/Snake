@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import static java.awt.event.KeyEvent.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static snake.Direction.*;
 
@@ -17,14 +18,14 @@ public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Point head;
 
-    static Random random = new Random();
+    private static Random random = new Random();
 
     private Direction direction = DOWN;
 
     private int lengthOfTail;
 
     private Timer timer;
-    Point apple;
+    private Point apple;
 
     private List<Point> snakeParts = new LinkedList<>();
 
@@ -120,23 +121,23 @@ public class Application implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (e.getKeyCode() == VK_SPACE) {
             if (timer.isRunning()) {
                 timer.stop();
             } else {
                 timer.start();
             }
         }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN && direction != UP) {
+        if (e.getKeyCode() == VK_DOWN && direction != UP) {
             direction = DOWN;
         }
-        if (e.getKeyCode() == KeyEvent.VK_UP && direction != DOWN) {
+        if (e.getKeyCode() == VK_UP && direction != DOWN) {
             direction = UP;
         }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT && direction != RIGHT) {
+        if (e.getKeyCode() == VK_LEFT && direction != RIGHT) {
             direction = LEFT;
         }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT && direction != LEFT) {
+        if (e.getKeyCode() == VK_RIGHT && direction != LEFT) {
             direction = RIGHT;
         }
     }
