@@ -15,7 +15,6 @@ class RenderPanel extends JPanel {
     RenderPanel(List<Point> snakeParts, Point apple) {
         this.snakeParts = snakeParts;
         this.apple = apple;
-        new JPanel();
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(400, 400));
     }
