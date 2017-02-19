@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static snake.Direction.*;
@@ -24,11 +25,13 @@ public class Application implements ActionListener, KeyListener {
     private ArrayList<Point> snakeParts = new ArrayList<>();
 
     private Application() {
-        timer = new Timer(10, this);
+        timer = new Timer(40, this);
         head = new Point(0, 0);
         jPanel = createJPanel();
         JFrame jFrame = createJFrame();
-        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts));
+        Random random = new Random();
+        Point cherry = new Point(random.nextInt(38), random.nextInt(38));
+        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts, cherry));
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();

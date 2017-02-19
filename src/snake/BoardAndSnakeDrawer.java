@@ -11,10 +11,13 @@ class BoardAndSnakeDrawer extends JComponent {
 
     private static int color = 0;
 
-    BoardAndSnakeDrawer(Point head, List<Point> snakeParts) {
+    private Point apple;
+
+    BoardAndSnakeDrawer(Point head, List<Point> snakeParts, Point apple) {
         x = head.x;
         y = head.y;
         this.snakeParts = snakeParts;
+        this.apple = apple;
     }
 
     public void paint(Graphics g) {
@@ -31,5 +34,7 @@ class BoardAndSnakeDrawer extends JComponent {
             g.setColor(Color.green);
             g.fillRect(point.x * 10, point.y * 10, 10, 10);
         }
+        g.setColor(Color.red);
+        g.fillRect(apple.x, apple.y, 10, 10);
     }
 }
