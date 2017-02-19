@@ -90,8 +90,7 @@ public class Application implements ActionListener, KeyListener {
     }
 
     private boolean isPartOfSnakeOnPoint(int x, int y) {
-        for (Point point :
-                snakeParts) {
+        for (Point point : snakeParts) {
             if (point.equals(new Point(head.x + x, head.y + y))) {
                 return true;
             }

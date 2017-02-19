@@ -8,7 +8,7 @@ class RenderPanel extends JPanel {
 
     private List<Point> snakeParts;
 
-    private static int color = 0;
+    private int color = 0;
 
     private Point apple;
 
