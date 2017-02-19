@@ -2,7 +2,7 @@ package snake;
 
 import java.awt.*;
 
-enum Direction implements DirectionInterface {
+enum Direction {
     DOWN {
         @Override
         public void move(Application application) {
@@ -31,7 +31,6 @@ enum Direction implements DirectionInterface {
             }
         }
     }, RIGHT {
-        @Override
         public void move(Application application) {
             if (vertical(application, 1, 0)) {
                 application.stopGame();
@@ -40,6 +39,8 @@ enum Direction implements DirectionInterface {
             }
         }
     };
+
+    abstract void move(Application application);
 
     private static boolean horizontal(Application application, int x, int y) {
         int nextPartOfSnake = application.getHead().y + y;
