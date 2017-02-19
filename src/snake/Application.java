@@ -92,7 +92,7 @@ public class Application implements ActionListener, KeyListener {
         }
 
         if (head.equals(apple)) {
-            lengthOfTail ++;
+            lengthOfTail++;
             apple.setLocation(random.nextInt(38), random.nextInt(38));
         }
 
@@ -100,8 +100,9 @@ public class Application implements ActionListener, KeyListener {
             snakeParts.remove(0);
         }
     }
-
+    
     @Override
+
     public void keyTyped(KeyEvent e) {
 
     }
