@@ -25,7 +25,7 @@ public class Application implements ActionListener, KeyListener {
     private int lengthOfTail;
 
     private Timer timer;
-    private Point apple;
+    private AppleGenerator appleGenerator;
 
     private List<Point> snakeParts = new LinkedList<>();
 
@@ -34,8 +34,8 @@ public class Application implements ActionListener, KeyListener {
         head = new Point(0, 0);
         jPanel = createJPanel();
         JFrame jFrame = createJFrame();
-        apple = new Point(random.nextInt(38), random.nextInt(38));
-        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts, apple));
+        appleGenerator = new AppleGenerator();
+        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts, appleGenerator.getApple()));
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();
@@ -93,9 +93,9 @@ public class Application implements ActionListener, KeyListener {
                 head = new Point(head.x + 1, head.y);
         }
 
-        if (head.equals(apple)) {
+        if (head.equals(appleGenerator.getApple())) {
             lengthOfTail++;
-            apple.setLocation(random.nextInt(38), random.nextInt(38));
+            appleGenerator.relocateApple();
         }
 
         if (snakeParts.size() > lengthOfTail) {
