@@ -30,9 +30,8 @@ public class Application implements ActionListener, KeyListener {
         timer = new Timer(50, this);
         head = new Point(0, 0);
         appleGenerator = new AppleGenerator();
-        jPanel = new BoardAndSnakeDrawer(head, snakeParts, appleGenerator.getApple());
+        jPanel = new BoardAndSnakeDrawer(snakeParts, appleGenerator.getApple());
         JFrame jFrame = createJFrame();
-        jPanel.add(new BoardAndSnakeDrawer(head, snakeParts, appleGenerator.getApple()));
         jFrame.add(jPanel);
         jFrame.pack();
         timer.start();
