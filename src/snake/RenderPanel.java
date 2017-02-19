@@ -20,7 +20,6 @@ class RenderPanel extends JPanel {
         this.setPreferredSize(new Dimension(400, 400));
         this.setMinimumSize(new Dimension(400, 400));
         this.setMaximumSize(new Dimension(400, 400));
-        this.setFocusable(true);
     }
 
     public void paint(Graphics g) {
