@@ -15,8 +15,8 @@ import static snake.Direction.*;
 
 public class Application implements ActionListener, KeyListener {
     private RenderPanel renderPanel;
-    private Point head;
 
+    private Point head;
     private Direction direction = DOWN;
 
     private int lengthOfTail;
@@ -54,31 +54,7 @@ public class Application implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         renderPanel.repaint();
         snakeParts.add(head);
-        if (direction == DOWN) {
-            if (head.y + 1 >= 40 || isPartOfSnakeOnPoint(0, 1)) {
-                timer.stop();
-            } else
-                head = new Point(head.x, head.y + 1);
-        }
-        if (direction == UP) {
-            if (head.y - 1 < 0 || isPartOfSnakeOnPoint(0, -1)) {
-                timer.stop();
-            } else
-                head = new Point(head.x, head.y - 1);
-        }
-        if (direction == LEFT) {
-            if (head.x - 1 < 0 || isPartOfSnakeOnPoint(-1, 0)) {
-                timer.stop();
-            } else
-                head = new Point(head.x - 1, head.y);
-        }
-        if (direction == RIGHT) {
-            if (head.x + 1 >= 40 || isPartOfSnakeOnPoint(1, 0)) {
-                timer.stop();
-            } else
-                head = new Point(head.x + 1, head.y);
-        }
-
+        direction.move(this);
         if (head.equals(appleGenerator.getApple())) {
             lengthOfTail++;
             appleGenerator.relocateApple();
@@ -89,7 +65,19 @@ public class Application implements ActionListener, KeyListener {
         }
     }
 
-    private boolean isPartOfSnakeOnPoint(int x, int y) {
+    public Point getHead() {
+        return head;
+    }
+
+    public void setHead(Point head) {
+        this.head = head;
+    }
+
+    void stopGame() {
+        timer.stop();
+    }
+
+    boolean isPartOfSnakeOnPoint(int x, int y) {
         for (Point point : snakeParts) {
             if (point.equals(new Point(head.x + x, head.y + y))) {
                 return true;
@@ -108,7 +96,7 @@ public class Application implements ActionListener, KeyListener {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
             if (timer.isRunning()) {
-                timer.stop();
+                stopGame();
             } else {
                 timer.start();
             }
