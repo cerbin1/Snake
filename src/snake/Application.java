@@ -101,30 +101,30 @@ public class Application implements ActionListener, KeyListener {
     }
 
     @Override
-
     public void keyTyped(KeyEvent e) {
 
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == VK_SPACE) {
+        int keyCode = e.getKeyCode();
+        if (keyCode == VK_SPACE) {
             if (timer.isRunning()) {
                 timer.stop();
             } else {
                 timer.start();
             }
         }
-        if (e.getKeyCode() == VK_DOWN && direction != UP) {
+        if (keyCode == VK_DOWN && direction != UP) {
             direction = DOWN;
         }
-        if (e.getKeyCode() == VK_UP && direction != DOWN) {
+        if (keyCode == VK_UP && direction != DOWN) {
             direction = UP;
         }
-        if (e.getKeyCode() == VK_LEFT && direction != RIGHT) {
+        if (keyCode == VK_LEFT && direction != RIGHT) {
             direction = LEFT;
         }
-        if (e.getKeyCode() == VK_RIGHT && direction != LEFT) {
+        if (keyCode == VK_RIGHT && direction != LEFT) {
             direction = RIGHT;
         }
     }
