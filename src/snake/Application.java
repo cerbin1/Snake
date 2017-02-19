@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import static java.awt.event.KeyEvent.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -17,8 +16,6 @@ import static snake.Direction.*;
 public class Application implements ActionListener, KeyListener {
     private JPanel jPanel;
     private Point head;
-
-    private static Random random = new Random();
 
     private Direction direction = DOWN;
 
