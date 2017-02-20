@@ -65,11 +65,11 @@ public class Application implements ActionListener, KeyListener {
         }
     }
 
-    public Point getHead() {
+    Point getHead() {
         return head;
     }
 
-    public void setHead(Point head) {
+    void setHead(Point head) {
         this.head = head;
     }
 
