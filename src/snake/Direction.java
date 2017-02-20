@@ -23,10 +23,10 @@ enum Direction {
     boolean horizontalOrVertical(Snake snake, int x, int y) {
         if (x == 0) {
             int nextPartOfSnake = snake.getHead().y + y;
-            return nextPartOfSnake >= 40 || nextPartOfSnake < 0 || snake.isPartOfSnakeOnPoint(x, y);
+            return nextPartOfSnake < 0 || nextPartOfSnake < 41 || snake.isPartOfSnakeOnPoint(x, y);
         } else {
             int nextPartOfSnake = snake.getHead().x + x;
-            return nextPartOfSnake >= 40 || nextPartOfSnake < 0 || snake.isPartOfSnakeOnPoint(x, y);
+            return nextPartOfSnake < 0 || nextPartOfSnake < 41 || snake.isPartOfSnakeOnPoint(x, y);
         }
     }
 
