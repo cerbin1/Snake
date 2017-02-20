@@ -7,13 +7,13 @@ import java.util.List;
 class Snake {
     private Point head;
     private int lengthOfTail;
+    private List<Point> snakeParts;
 
-    Snake(Point head) {
-        this.head = head;
+    Snake() {
+        head = new Point(0, 0);
         lengthOfTail = 5;
+        snakeParts = new LinkedList<>();
     }
-
-    private List<Point> snakeParts = new LinkedList<>();
 
     void setHead(Point head) {
         this.head = head;
