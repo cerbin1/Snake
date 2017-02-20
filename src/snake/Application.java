@@ -54,11 +54,12 @@ public class Application implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         renderPanel.repaint();
         snakeParts.add(head);
-        direction.move(this);
+
         if (head.equals(appleGenerator.getApple())) {
             lengthOfTail++;
             appleGenerator.relocateApple();
         }
+        direction.move(this);
 
         if (snakeParts.size() > lengthOfTail) {
             snakeParts.remove(0);
