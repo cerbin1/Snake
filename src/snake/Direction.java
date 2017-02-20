@@ -12,25 +12,25 @@ enum Direction {
         this.y = y;
     }
 
-    public void move(Application app) {
-        if (horizontalOrVertical(app, x, y)) {
+    public void move(Snake snake, Application app) {
+        if (horizontalOrVertical(snake, x, y)) {
             app.stopGame();
         } else {
-            addNewSnakePart(app, x, y);
+            addNewSnakePart(snake, x, y);
         }
     }
 
-    boolean horizontalOrVertical(Application app, int x, int y) {
+    boolean horizontalOrVertical(Snake snake, int x, int y) {
         if (x == 0) {
-            int nextPartOfSnake = app.getHead().y + y;
-            return nextPartOfSnake >= 40 || nextPartOfSnake < 0 || app.isPartOfSnakeOnPoint(x, y);
+            int nextPartOfSnake = snake.getHead().y + y;
+            return nextPartOfSnake >= 40 || nextPartOfSnake < 0 || snake.isPartOfSnakeOnPoint(x, y);
         } else {
-            int nextPartOfSnake = app.getHead().x + x;
-            return nextPartOfSnake >= 40 || nextPartOfSnake < 0 || app.isPartOfSnakeOnPoint(x, y);
+            int nextPartOfSnake = snake.getHead().x + x;
+            return nextPartOfSnake >= 40 || nextPartOfSnake < 0 || snake.isPartOfSnakeOnPoint(x, y);
         }
     }
 
-    private static void addNewSnakePart(Application application, int x, int y) {
-        application.setHead(new Point(application.getHead().x + x, application.getHead().y + y));
+    private static void addNewSnakePart(Snake snake, int x, int y) {
+        snake.setHead(new Point(snake.getHead().x + x, snake.getHead().y + y));
     }
 }

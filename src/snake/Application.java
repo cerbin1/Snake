@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.LinkedList;
-import java.util.List;
 
 import static java.awt.event.KeyEvent.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -15,27 +13,21 @@ import static snake.Direction.*;
 
 public class Application implements ActionListener, KeyListener {
     private RenderPanel renderPanel;
-
-    private Point head;
     private Direction direction = DOWN;
-
-    private int lengthOfTail;
-
     private Timer timer;
     private AppleGenerator appleGenerator;
 
-    private List<Point> snakeParts = new LinkedList<>();
+    private Snake snake;
 
     private Application() {
         timer = new Timer(50, this);
-        head = new Point(0, 0);
+        snake = new Snake(new Point(0, 0));
         appleGenerator = new AppleGenerator();
-        renderPanel = new RenderPanel(snakeParts, appleGenerator.getApple());
+        renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
         JFrame jFrame = createJFrame();
         jFrame.add(renderPanel);
         jFrame.pack();
         timer.start();
-        lengthOfTail = 5;
     }
 
     private JFrame createJFrame() {
@@ -53,39 +45,24 @@ public class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         renderPanel.repaint();
-        snakeParts.add(head);
+        snake.addHead();
 
-        if (head.equals(appleGenerator.getApple())) {
-            lengthOfTail++;
+        if (snake.getHead().equals(appleGenerator.getApple())) {
+            snake.increaseTail();
             appleGenerator.relocateApple();
         }
-        direction.move(this);
+        direction.move(snake, this);
 
-        if (snakeParts.size() > lengthOfTail) {
-            snakeParts.remove(0);
+        if (snake.getSnakeParts().size() > snake.getLengthOfTail()) {
+            snake.getSnakeParts().remove(0);
         }
     }
 
-    Point getHead() {
-        return head;
-    }
-
-    void setHead(Point head) {
-        this.head = head;
-    }
 
     void stopGame() {
         timer.stop();
     }
 
-    boolean isPartOfSnakeOnPoint(int x, int y) {
-        for (Point point : snakeParts) {
-            if (point.equals(new Point(head.x + x, head.y + y))) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {
