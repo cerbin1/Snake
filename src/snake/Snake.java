@@ -15,18 +15,6 @@ class Snake {
         snakeParts = new LinkedList<>();
     }
 
-    void setHead(Point head) {
-        this.head = head;
-    }
-
-    List<Point> getSnakeParts() {
-        return snakeParts;
-    }
-
-    Point getHead() {
-        return head;
-    }
-
     boolean isPartOfSnakeOnPoint(int x, int y) {
         for (Point point : snakeParts) {
             if (point.equals(new Point(head.x + x, head.y + y))) {
@@ -36,12 +24,24 @@ class Snake {
         return false;
     }
 
+    void setHead(Point head) {
+        this.head = head;
+    }
+
     void addHead() {
         snakeParts.add(head);
     }
 
+    Point getHead() {
+        return head;
+    }
+
     int getLengthOfTail() {
         return lengthOfTail;
+    }
+
+    List<Point> getSnakeParts() {
+        return snakeParts;
     }
 
     void increaseTail() {
