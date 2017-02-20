@@ -45,6 +45,6 @@ class Snake {
     }
 
     void increaseTail() {
-        lengthOfTail++;
+        lengthOfTail += 1;
     }
 }
