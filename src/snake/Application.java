@@ -36,7 +36,6 @@ public class Application implements ActionListener, KeyListener {
         if (snake.getHead().equals(appleGenerator.getApple())) {
             snake.increaseTail();
             appleGenerator.relocateApple();
-            System.out.println("zjadlem");
         }
         direction.move(snake, this);
 
