@@ -21,7 +21,6 @@ class GameFrame {
         jFrame.pack();
     }
 
-
     private JFrame createJFrame() {
         JFrame frame = new JFrame();
         frame.setSize(new Dimension(400, 400));
