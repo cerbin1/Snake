@@ -1,14 +1,12 @@
 package snake;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static snake.Direction.*;
 
 public class Application implements ActionListener, KeyListener {
@@ -16,6 +14,7 @@ public class Application implements ActionListener, KeyListener {
     private Direction direction = DOWN;
     private Timer timer;
     private AppleGenerator appleGenerator;
+    private GameFrame gameFrame;
 
     private Snake snake;
 
@@ -24,22 +23,9 @@ public class Application implements ActionListener, KeyListener {
         snake = new Snake(5);
         appleGenerator = new AppleGenerator();
         renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
-        JFrame jFrame = createJFrame();
-        jFrame.add(renderPanel);
-        jFrame.pack();
+        gameFrame = new GameFrame(this, renderPanel);
+        gameFrame.display();
         timer.start();
-    }
-
-    private JFrame createJFrame() {
-        JFrame frame = new JFrame();
-        frame.setSize(new Dimension(400, 400));
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.addKeyListener(this);
-        frame.setFocusable(true);
-        frame.setVisible(true);
-        return frame;
     }
 
     @Override
@@ -50,6 +36,7 @@ public class Application implements ActionListener, KeyListener {
         if (snake.getHead().equals(appleGenerator.getApple())) {
             snake.increaseTail();
             appleGenerator.relocateApple();
+            System.out.println("zjadlem");
         }
         direction.move(snake, this);
 
