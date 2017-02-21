@@ -8,14 +8,14 @@ class AppleGenerator {
     private Random random = new Random();
 
     AppleGenerator() {
-        apple = new Point(randomizeX(), randomizeY());
+        apple = new Point(getRandomizedX(), getRandomizedY());
     }
 
-    private int randomizeX() {
+    private int getRandomizedX() {
         return random.nextInt(38);
     }
 
-    private int randomizeY() {
+    private int getRandomizedY() {
         return random.nextInt(38);
     }
 
@@ -24,6 +24,6 @@ class AppleGenerator {
     }
 
     void relocateApple() {
-        apple.setLocation(randomizeX(), randomizeY());
+        apple.setLocation(getRandomizedX(), getRandomizedY());
     }
 }
