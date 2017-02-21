@@ -9,9 +9,9 @@ class Snake {
     private int lengthOfTail;
     private List<Point> snakeParts;
 
-    Snake() {
+    Snake(int lengthOfTail) {
         head = new Point(0, 0);
-        lengthOfTail = 5;
+        this.lengthOfTail = lengthOfTail;
         snakeParts = new LinkedList<>();
     }
 

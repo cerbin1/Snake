@@ -21,7 +21,7 @@ public class Application implements ActionListener, KeyListener {
 
     private Application() {
         timer = new Timer(50, this);
-        snake = new Snake();
+        snake = new Snake(5);
         appleGenerator = new AppleGenerator();
         renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
         JFrame jFrame = createJFrame();
