@@ -39,9 +39,13 @@ public class Application implements ActionListener, KeyListener {
         }
         direction.move(snake, timerManager);
 
-        if (snake.getSnakeParts().size() > snake.getLengthOfTail()) {
+        if (isTailOfSnakeTooLong()) {
             snake.getSnakeParts().remove(0);
         }
+    }
+
+    private boolean isTailOfSnakeTooLong() {
+        return snake.getSnakeParts().size() > snake.getLengthOfTail();
     }
 
     @Override
