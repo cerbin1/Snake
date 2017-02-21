@@ -19,7 +19,7 @@ class TimerManager {
         timer.stop();
     }
 
-    boolean isTimmerRunning() {
+    boolean isTimerRunning() {
         return timer.isRunning();
     }
 }

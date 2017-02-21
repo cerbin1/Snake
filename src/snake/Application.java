@@ -48,12 +48,12 @@ public class Application implements ActionListener, KeyListener {
         }
     }
 
-    private void removeLastPart() {
-        snake.getSnakeParts().remove(0);
-    }
-
     private boolean isTailOfSnakeTooLong() {
         return snake.getSnakeParts().size() > snake.getLengthOfTail();
+    }
+
+    private void removeLastPart() {
+        snake.getSnakeParts().remove(0);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Application implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
-            if (timerManager.isTimmerRunning()) {
+            if (timerManager.isTimerRunning()) {
                 timerManager.stopTimer();
             } else {
                 timerManager.startTimer();

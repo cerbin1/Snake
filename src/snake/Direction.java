@@ -12,9 +12,9 @@ enum Direction {
         this.y = y;
     }
 
-    public void move(Snake snake, TimerManager timer) {
+    public void move(Snake snake, TimerManager timerManager) {
         if (horizontalOrVertical(snake, x, y)) {
-            timer.stopTimer();
+            timerManager.stopTimer();
         } else {
             addNewSnakePart(snake, x, y);
         }
@@ -30,7 +30,7 @@ enum Direction {
         }
     }
 
-    private static void addNewSnakePart(Snake snake, int x, int y) {
+    private void addNewSnakePart(Snake snake, int x, int y) {
         snake.setHead(new Point(snake.getHead().x + x, snake.getHead().y + y));
     }
 }
