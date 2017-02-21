@@ -12,9 +12,9 @@ enum Direction {
         this.y = y;
     }
 
-    public void move(Snake snake, Application app) {
+    public void move(Snake snake, TimerManager timer) {
         if (horizontalOrVertical(snake, x, y)) {
-            app.stopGame();
+            timer.startTimer();
         } else {
             addNewSnakePart(snake, x, y);
         }

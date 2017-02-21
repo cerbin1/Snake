@@ -12,20 +12,20 @@ import static snake.Direction.*;
 public class Application implements ActionListener, KeyListener {
     private RenderPanel renderPanel;
     private Direction direction = DOWN;
-    private Timer timer;
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
+    private TimerManager timerManager;
 
     private Snake snake;
 
     private Application() {
-        timer = new Timer(50, this);
+        timerManager = new TimerManager(this);
         snake = new Snake(5);
         appleGenerator = new AppleGenerator();
         renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
         gameFrame = new GameFrame(this, renderPanel);
         gameFrame.display();
-        timer.start();
+        timerManager.startTimer();
     }
 
     @Override
@@ -37,18 +37,12 @@ public class Application implements ActionListener, KeyListener {
             snake.increaseTail();
             appleGenerator.relocateApple();
         }
-        direction.move(snake, this);
+        direction.move(snake, timerManager);
 
         if (snake.getSnakeParts().size() > snake.getLengthOfTail()) {
             snake.getSnakeParts().remove(0);
         }
     }
-
-
-    void stopGame() {
-        timer.stop();
-    }
-
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -59,10 +53,10 @@ public class Application implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
-            if (timer.isRunning()) {
-                stopGame();
+            if (timerManager.isTimmerRunning()) {
+                timerManager.stopTimer();
             } else {
-                timer.start();
+                timerManager.startTimer();
             }
         }
         if (keyCode == VK_DOWN && direction != UP) {
