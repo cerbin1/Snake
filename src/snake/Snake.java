@@ -16,12 +16,8 @@ class Snake {
     }
 
     boolean isPartOfSnakeOnPoint(int x, int y) {
-        for (Point point : snakeParts) {
-            if (point.equals(new Point(head.x + x, head.y + y))) {
-                return true;
-            }
-        }
-        return false;
+        return snakeParts.stream().anyMatch(point -> point.equals(
+                new Point(head.x + x, head.y + y)));
     }
 
     void setHead(Point head) {

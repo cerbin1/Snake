@@ -65,14 +65,14 @@ public class Application implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
-            if (timerManager.isTimerRunning()) {
-                timerManager.stopTimer();
+            if (timerManager.isTimerRunning()) { // ten cały if mógłby być w metodzie
+                timerManager.stopTimer();        // timerManager.toggle()
             } else {
                 timerManager.startTimer();
             }
         }
-        if (keyCode == VK_DOWN && direction != UP) {
-            direction = DOWN;
+        if (keyCode == VK_DOWN && direction != UP) { // z tymi czterema trzeba coś zrobić
+            direction = DOWN;                       // może by corobić metodę direction.opposite() ?
         }
         if (keyCode == VK_UP && direction != DOWN) {
             direction = UP;
