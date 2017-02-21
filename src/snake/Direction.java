@@ -14,7 +14,7 @@ enum Direction {
 
     public void move(Snake snake, TimerManager timer) {
         if (horizontalOrVertical(snake, x, y)) {
-            timer.startTimer();
+            timer.stopTimer();
         } else {
             addNewSnakePart(snake, x, y);
         }
