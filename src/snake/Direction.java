@@ -1,5 +1,6 @@
 package snake;
 
+import javax.swing.*;
 import java.awt.*;
 
 enum Direction {
@@ -12,10 +13,10 @@ enum Direction {
         this.y = y;
     }
 
-    public void move(Snake snake, TimerManager timerManager) {
+    public void move(Snake snake, Timer timer) {
         if (horizontalOrVertical(snake, x, y)) {
-            timerManager.stopTimer(); // co kurwa?
-        } else { // po co kierunek ma co kolwiek wiedzieć o TimerManager? Jedyne co, to diretion może miec metode w stylu "canMove" czy cos takiego. i dopiero jak canMove zwroci false to jakas inna klasa zrobi stopTimer.
+            timer.stop(); // co kurwa?
+        } else { // po co kierunek ma co kolwiek wiedzieć o Timer? Jedyne co, to diretion może miec metode w stylu "canMove" czy cos takiego. i dopiero jak canMove zwroci false to jakas inna klasa zrobi stopTimer.
             addNewSnakePart(snake, x, y);
         }
     }

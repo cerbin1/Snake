@@ -1,5 +1,6 @@
 package snake;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,18 +15,19 @@ public class Application implements ActionListener, KeyListener {
     private Direction direction = DOWN;
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
-    private TimerManager timerManager;
+    private Timer timer;
+    private final int interval = 50;
 
     private Snake snake;
 
     private Application() {
         initializeComponents();
         gameFrame.display();
-        timerManager.startTimer();
+        timer.start();
     }
 
     private void initializeComponents() {
-        timerManager = new TimerManager(this);
+        timer = new Timer(interval, this);
         snake = new Snake(5);
         appleGenerator = new AppleGenerator(400, 400);
         renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
@@ -41,7 +43,7 @@ public class Application implements ActionListener, KeyListener {
             snake.increaseLength();
             appleGenerator.relocateApple();
         }
-        direction.move(snake, timerManager);
+        direction.move(snake, timer);
 
         if (isTailOutOfSnake()) {
             removeLastPart();
@@ -65,10 +67,10 @@ public class Application implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
-            if (timerManager.isTimerRunning()) { // ten cały if mógłby być w metodzie
-                timerManager.stopTimer();        // timerManager.toggle()
+            if (timer.isRunning()) { // ten cały if mógłby być w metodzie
+                timer.stop();        // timer.toggle()
             } else {
-                timerManager.startTimer();
+                timer.start();
             }
         }
         if (keyCode == VK_DOWN && direction != UP) { // z tymi czterema trzeba coś zrobić
