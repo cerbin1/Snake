@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
+import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
 
 public class Application implements ActionListener, KeyListener {
@@ -90,6 +91,6 @@ public class Application implements ActionListener, KeyListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(Application::new);
+        invokeLater(Application::new);
     }
 }

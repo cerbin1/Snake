@@ -5,11 +5,8 @@ import java.awt.*;
 import java.util.List;
 
 class RenderPanel extends JPanel {
-
     private List<Point> snakeParts;
-
     private int color = 0;
-
     private Point apple;
 
     RenderPanel(List<Point> snakeParts, Point apple) {
@@ -33,10 +30,10 @@ class RenderPanel extends JPanel {
     }
 
     private void drawSnake(Graphics g) {
-        for (Point point : snakeParts) {
+        snakeParts.forEach(point -> {
             g.setColor(Color.green);
             g.fillRect(point.x * 10, point.y * 10, 10, 10);
-        }
+        });
     }
 
     private void drawApple(Graphics g) {

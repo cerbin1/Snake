@@ -5,14 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Snake {
-    private Point head;
-    private int lengthOfTail;
-    private List<Point> snakeParts;
+    private Point head = new Point(0, 0);
+    private int lengthOfTail; // może samo length?
+    private List<Point> snakeParts = new LinkedList<>();
 
     Snake(int lengthOfTail) {
-        head = new Point(0, 0);
         this.lengthOfTail = lengthOfTail;
-        snakeParts = new LinkedList<>();
     }
 
     boolean isPartOfSnakeOnPoint(int x, int y) {
@@ -32,7 +30,7 @@ class Snake {
         return head;
     }
 
-    int getLengthOfTail() {
+    int getLengthOfTail() { // może samo getLength()?
         return lengthOfTail;
     }
 
