@@ -27,7 +27,7 @@ public class Application implements ActionListener, KeyListener {
     private void initializeComponents() {
         timerManager = new TimerManager(this);
         snake = new Snake(5);
-        appleGenerator = new AppleGenerator();
+        appleGenerator = new AppleGenerator(400, 400);
         renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
         gameFrame = new GameFrame(this, renderPanel);
     }

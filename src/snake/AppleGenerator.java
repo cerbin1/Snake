@@ -6,9 +6,13 @@ import java.util.Random;
 class AppleGenerator {
     private Point apple;
     private Random random = new Random();
+    private int bottomEdge;
+    private int rightEdge;
 
-    AppleGenerator() {
-        apple = new Point(getRandomNumber(38), getRandomNumber(38));
+    AppleGenerator(int width, int height) {
+        bottomEdge = width / 10 - 2;
+        rightEdge = height / 10 - 2;
+        apple = new Point(getRandomNumber(bottomEdge), getRandomNumber(rightEdge));
     }
 
     private int getRandomNumber(int maxNumber) {
@@ -20,6 +24,6 @@ class AppleGenerator {
     }
 
     void relocateApple() {
-        apple.setLocation(getRandomNumber(38), getRandomNumber(38));
+        apple.setLocation(getRandomNumber(bottomEdge), getRandomNumber(rightEdge));
     }
 }
