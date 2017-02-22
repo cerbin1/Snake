@@ -12,7 +12,11 @@ class AppleGenerator {
     AppleGenerator(int width, int height) {
         rightEdge = width / 10 - 2;
         bottomEdge = height / 10 - 2;
-        apple = new Point(getRandomNumberNotExceeding(bottomEdge), getRandomNumberNotExceeding(rightEdge));
+        apple = getRandomPoint();
+    }
+
+    private Point getRandomPoint() {
+        return new Point(getRandomNumberNotExceeding(bottomEdge), getRandomNumberNotExceeding(rightEdge));
     }
 
     private int getRandomNumberNotExceeding(int maxNumber) {
