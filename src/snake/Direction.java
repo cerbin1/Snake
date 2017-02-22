@@ -11,19 +11,19 @@ enum Direction {
         this.y = y;
     }
 
-    public void move(Snake snake, Timer timer) {
+    public void move(Snake snake, Timer timer) { // ruszenie węża spoko, wszystko inne nie spoko. (sprawdzanie czy udeżył w coś powinno być gdzie indziej)
         if (isAbleToMove(snake)) {
             addNewSnakePart(snake);
         } else {
-            timer.stop();
+            timer.stop(); // czemu timer.stop() ?
         }
     }
 
-    private boolean isAbleToMove(Snake snake) {
+    private boolean isAbleToMove(Snake snake) { // Czemu time ma umieć stwierdzić czy snake się może ruszyć?
         return isInsideOfBoardVerticalOrHorizontal(snake);
     }
 
-    boolean isInsideOfBoardVerticalOrHorizontal(Snake snake) {
+    boolean isInsideOfBoardVerticalOrHorizontal(Snake snake) { // Czemu time ma umieć stwierdzić czy snake się może ruszyć?
         if (x == 0) {
             return isInsideOfBoardHorizontal(snake);
         } else {
@@ -31,12 +31,12 @@ enum Direction {
         }
     }
 
-    private boolean isInsideOfBoardHorizontal(Snake snake) {
+    private boolean isInsideOfBoardHorizontal(Snake snake) { // Czemu time ma umieć stwierdzić czy snake się może ruszyć?
         int nextPartOfSnake = snake.getHead().y + y;
         return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !snake.isPartOfSnakeOnPoint(x, y);
     }
 
-    private boolean isInsideOfBoardVertical(Snake snake) {
+    private boolean isInsideOfBoardVertical(Snake snake) { // Czemu time ma umieć stwierdzić czy snake się może ruszyć?
         int nextPartOfSnake = snake.getHead().x + x;
         return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !snake.isPartOfSnakeOnPoint(x, y);
     }
