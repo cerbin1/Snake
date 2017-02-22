@@ -43,7 +43,7 @@ public class Application implements ActionListener, KeyListener {
         }
         direction.move(snake, timerManager);
 
-        if (isTailOfSnakeTooLong()) {
+        if (isTailOfSnakeTooLong()) { // chujowa nazwa (skąd klient ma wiedzieć co to znaczy "tooLong". 10 to too long? MAX_INT (2.4mld) to too long? trzeba zmienic
             removeLastPart();
         }
     }
