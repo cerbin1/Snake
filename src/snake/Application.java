@@ -1,6 +1,5 @@
 package snake;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -67,11 +66,7 @@ public class Application implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
-            if (timer.isRunning()) { // ten cały if mógłby być w metodzie
-                timer.stop();        // timer.toggle()
-            } else {
-                timer.start();
-            }
+            timer.toggle();
         }
         if (keyCode == VK_DOWN && direction != UP) { // z tymi czterema trzeba coś zrobić
             direction = DOWN;                       // może by corobić metodę direction.opposite() ?
