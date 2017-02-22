@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import static java.awt.event.KeyEvent.*;
 import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
@@ -15,7 +14,6 @@ public class Application implements ActionListener, KeyListener {
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
     private Timer timer;
-
     private Snake snake;
 
     private Application() {
