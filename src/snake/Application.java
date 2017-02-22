@@ -38,7 +38,7 @@ public class Application implements ActionListener, KeyListener {
         snake.addHead();
 
         if (snake.getHead().equals(appleGenerator.getApple())) {
-            snake.increaseTail();
+            snake.increaseLength();
             appleGenerator.relocateApple();
         }
         direction.move(snake, timerManager);
@@ -49,7 +49,7 @@ public class Application implements ActionListener, KeyListener {
     }
 
     private boolean isTailOutOfSnake() {
-        return snake.getSnakeParts().size() > snake.getLengthOfTail();
+        return snake.getSnakeParts().size() > snake.getLength();
     }
 
     private void removeLastPart() {

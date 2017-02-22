@@ -6,11 +6,11 @@ import java.util.List;
 
 class Snake {
     private Point head = new Point(0, 0);
-    private int lengthOfTail; // może samo length?
+    private int length;
     private List<Point> snakeParts = new LinkedList<>();
 
-    Snake(int lengthOfTail) {
-        this.lengthOfTail = lengthOfTail;
+    Snake(int length) {
+        this.length = length;
     }
 
     boolean isPartOfSnakeOnPoint(int x, int y) {
@@ -30,15 +30,15 @@ class Snake {
         return head;
     }
 
-    int getLengthOfTail() { // może samo getLength()?
-        return lengthOfTail;
+    int getLength() { // może samo getLength()?
+        return length;
     }
 
     List<Point> getSnakeParts() {
         return snakeParts;
     }
 
-    void increaseTail() {
-        lengthOfTail += 1;
+    void increaseLength() {
+        length += 1;
     }
 }
