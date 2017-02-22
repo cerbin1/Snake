@@ -12,10 +12,10 @@ class AppleGenerator {
     AppleGenerator(int width, int height) {
         bottomEdge = width / 10 - 2;
         rightEdge = height / 10 - 2;
-        apple = new Point(getRandomNumber(bottomEdge), getRandomNumber(rightEdge));
+        apple = new Point(getRandomNumberMaxAs(bottomEdge), getRandomNumberMaxAs(rightEdge));
     }
 
-    private int getRandomNumber(int maxNumber) {
+    private int getRandomNumberMaxAs(int maxNumber) {
         return random.nextInt(maxNumber);
     }
 
@@ -24,6 +24,6 @@ class AppleGenerator {
     }
 
     void relocateApple() {
-        apple.setLocation(getRandomNumber(bottomEdge), getRandomNumber(rightEdge));
+        apple.setLocation(getRandomNumberMaxAs(bottomEdge), getRandomNumberMaxAs(rightEdge));
     }
 }
