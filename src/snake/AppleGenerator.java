@@ -4,10 +4,10 @@ import java.awt.*;
 import java.util.Random;
 
 class AppleGenerator {
-    private Point apple;
-    private Random random = new Random();
-    private int bottomEdge;
-    private int rightEdge;
+    private final Point apple;
+    private final Random random = new Random();
+    private final int bottomEdge;
+    private final int rightEdge;
 
     AppleGenerator(int width, int height) {
         bottomEdge = width / 10 - 2;
