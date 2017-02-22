@@ -12,24 +12,37 @@ enum Direction {
     }
 
     public void move(Snake snake, Timer timer) {
-        if (horizontalOrVertical(snake, x, y)) {
-            timer.stop(); // co kurwa?
-        } else { // po co kierunek ma co kolwiek wiedzieć o Timer? Jedyne co, to diretion może miec metode w stylu "canMove" czy cos takiego. i dopiero jak canMove zwroci false to jakas inna klasa zrobi stopTimer.
-            addNewSnakePart(snake, x, y);
-        }
-    }
-
-    boolean horizontalOrVertical(Snake snake, int x, int y) {
-        if (x == 0) {
-            int nextPartOfSnake = snake.getHead().y + y;
-            return nextPartOfSnake < 0 || nextPartOfSnake > 39 || snake.isPartOfSnakeOnPoint(x, y);
+        if (isAbleToMove(snake)) {
+            addNewSnakePart(snake);
         } else {
-            int nextPartOfSnake = snake.getHead().x + x;
-            return nextPartOfSnake < 0 || nextPartOfSnake > 39 || snake.isPartOfSnakeOnPoint(x, y);
+            timer.stop();
         }
     }
 
-    private void addNewSnakePart(Snake snake, int x, int y) {
-        snake.setHead(new Point(snake.getHead().x + x, snake.getHead().y + y));
+    private boolean isAbleToMove(Snake snake) {
+        return isInsideOfBoardVerticalOrHorizontal(snake);
+    }
+
+    boolean isInsideOfBoardVerticalOrHorizontal(Snake snake) {
+        if (x == 0) {
+            return isInsideOfBoardHorizontal(snake);
+        } else {
+            return isInsideOfBoardVertical(snake);
+        }
+    }
+
+    private boolean isInsideOfBoardHorizontal(Snake snake) {
+        int nextPartOfSnake = snake.getHead().y + y;
+        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !snake.isPartOfSnakeOnPoint(x, y);
+    }
+
+    private boolean isInsideOfBoardVertical(Snake snake) {
+        int nextPartOfSnake = snake.getHead().x + x;
+        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !snake.isPartOfSnakeOnPoint(x, y);
+    }
+
+    private void addNewSnakePart(Snake snake) {
+        Point newSnakeHead = new Point(snake.getHead().x + x, snake.getHead().y + y);
+        snake.setHead(newSnakeHead);
     }
 }
