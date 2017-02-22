@@ -15,7 +15,6 @@ public class Application implements ActionListener, KeyListener {
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
     private Timer timer;
-    private final int interval = 50;
 
     private Snake snake;
 
@@ -26,6 +25,7 @@ public class Application implements ActionListener, KeyListener {
     }
 
     private void initializeComponents() {
+        int interval = 50;
         timer = new Timer(interval, this);
         snake = new Snake(5);
         appleGenerator = new AppleGenerator(400, 400);
