@@ -10,8 +10,8 @@ class AppleGenerator {
     private final int rightEdge;
 
     AppleGenerator(int width, int height) {
-        bottomEdge = width / 10 - 2;
-        rightEdge = height / 10 - 2;
+        rightEdge = width / 10 - 2;
+        bottomEdge = height / 10 - 2;
         apple = new Point(getRandomNumberMaxAs(bottomEdge), getRandomNumberMaxAs(rightEdge));
     }
 
