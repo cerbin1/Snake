@@ -11,11 +11,11 @@ enum Direction {
         this.y = y;
     }
 
-    public void move(Snake snake, Timer timer) { // ruszenie węża spoko, wszystko inne nie spoko. (sprawdzanie czy udeżył w coś powinno być gdzie indziej)
+    public void move(Snake snake, Application application) { // ruszenie węża spoko, wszystko inne nie spoko. (sprawdzanie czy udeżył w coś powinno być gdzie indziej)
         if (isAbleToMove(snake)) {
             addNewSnakePart(snake);
         } else {
-            timer.stop(); // czemu timer.stop() ?
+            application.endGame();
         }
     }
 
