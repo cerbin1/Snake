@@ -14,10 +14,11 @@ public class Application implements ActionListener, KeyListener {
     private Direction direction = DOWN;
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
-    private Timer timer;
-    private Snake snake;
 
-    private Application() {
+    private Timer timer;
+
+    private Snake snake;
+    Application() {
         initializeComponents();
         gameFrame.display();
         timer.start();
@@ -52,6 +53,10 @@ public class Application implements ActionListener, KeyListener {
 
     void endGame() {
         timer.stop();
+    }
+
+    Timer getTimer() {
+        return timer;
     }
 
     @Override
