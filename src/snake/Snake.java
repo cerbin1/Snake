@@ -26,10 +26,6 @@ class Snake {
         return head;
     }
 
-    private int getLength() { // może samo getLength()?
-        return length;
-    }
-
     List<Point> getParts() {
         return parts;
     }
@@ -43,7 +39,7 @@ class Snake {
     }
 
     void resizeIfNeeded() {
-        if(isLastPartOutOfSnake()) {
+        if (isLastPartOutOfSnake()) {
             removeLastPart();
         }
     }
