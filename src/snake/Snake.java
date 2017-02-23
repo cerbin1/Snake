@@ -8,6 +8,7 @@ class Snake {
     private Point head = new Point(0, 0);
     private int length;
     private List<Point> snakeParts = new LinkedList<>();
+    private SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(this);
 
     Snake(int length) {
         this.length = length;
@@ -38,29 +39,6 @@ class Snake {
     }
 
     boolean isAbleToMove(int x, int y) {
-        return isInsideOfBoardVerticalOrHorizontal(x, y);
-    }
-
-    private boolean isInsideOfBoardVerticalOrHorizontal(int x, int y) {
-        if (x == 0) {
-            return isInsideOfBoardHorizontal(x, y);
-        } else {
-            return isInsideOfBoardVertical(x, y);
-        }
-    }
-
-    private boolean isInsideOfBoardHorizontal(int x, int y) {
-        int nextPartOfSnake = getHead().y + y;
-        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !isPartOfSnakeOnPoint(x, y);
-    }
-
-    private boolean isInsideOfBoardVertical(int x, int y) {
-        int nextPartOfSnake = getHead().x + x;
-        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !isPartOfSnakeOnPoint(x, y);
-    }
-
-    private boolean isPartOfSnakeOnPoint(int x, int y) {
-        return snakeParts.stream().anyMatch(point -> point.equals(
-                new Point(head.x + x, head.y + y)));
+        return snakeMoveValidator.isInsideOfBoardVerticalOrHorizontal(x, y);
     }
 }
