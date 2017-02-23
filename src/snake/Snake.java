@@ -13,11 +13,6 @@ class Snake {
         this.length = length;
     }
 
-    private boolean isPartOfSnakeOnPoint(int x, int y) {
-        return snakeParts.stream().anyMatch(point -> point.equals(
-                new Point(head.x + x, head.y + y)));
-    }
-
     void setHead(Point head) {
         this.head = head;
     }
@@ -42,7 +37,6 @@ class Snake {
         length += 1;
     }
 
-
     boolean isAbleToMove(int x, int y) {
         return isInsideOfBoardVerticalOrHorizontal(x, y);
     }
@@ -63,5 +57,10 @@ class Snake {
     private boolean isInsideOfBoardVertical(int x, int y) {
         int nextPartOfSnake = getHead().x + x;
         return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !isPartOfSnakeOnPoint(x, y);
+    }
+
+    private boolean isPartOfSnakeOnPoint(int x, int y) {
+        return snakeParts.stream().anyMatch(point -> point.equals(
+                new Point(head.x + x, head.y + y)));
     }
 }
