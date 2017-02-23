@@ -38,12 +38,16 @@ public class Application implements ActionListener, KeyListener {
         renderPanel.repaint();
         snake.addHead();
 
-        if (snake.getHead().equals(appleGenerator.getApple())) {
+        if (isAppleReachedBySnake()) {
             snake.increaseLength();
             appleGenerator.relocateApple();
         }
         direction.move(snake, this);
         snake.resizeIfNeeded();
+    }
+
+    private boolean isAppleReachedBySnake() {
+        return snake.getHead().equals(appleGenerator.getApple());
     }
 
     void endGame() {
