@@ -29,5 +29,4 @@ public class TimerTest {
         // then
         assertEquals(app.getTimer().isRunning(), true);
     }
-
 }
