@@ -7,8 +7,8 @@ import java.awt.event.KeyListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 class GameFrame {
-    private KeyListener keyListener;
-    private RenderPanel renderPanel;
+    private final KeyListener keyListener;
+    private final RenderPanel renderPanel;
 
     GameFrame(KeyListener keyListener, RenderPanel renderPanel) {
         this.keyListener = keyListener;

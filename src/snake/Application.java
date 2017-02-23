@@ -9,7 +9,7 @@ import static java.awt.event.KeyEvent.*;
 import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
 
-public class Application implements ActionListener, KeyListener {
+class Application implements ActionListener, KeyListener {
     private RenderPanel renderPanel;
     private Direction direction = DOWN;
     private AppleGenerator appleGenerator;

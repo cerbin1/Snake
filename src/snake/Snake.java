@@ -7,8 +7,8 @@ import java.util.List;
 class Snake {
     private Point head = new Point(0, 0);
     private int length;
-    private List<Point> parts = new LinkedList<>();
-    private SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(this);
+    private final List<Point> parts = new LinkedList<>();
+    private final SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(this);
 
     Snake(int length) {
         this.length = length;
