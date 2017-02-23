@@ -11,24 +11,24 @@ class SnakeMoveValidator {
 
     boolean isInsideOfBoardVerticalOrHorizontal(int x, int y) {
         if (x == 0) {
-            return isInsideOfBoardHorizontal(x, y);
+            return isInsideOfBoardHorizontal(y) && isFieldEmptyOnPoint(x, y);
         } else {
-            return isInsideOfBoardVertical(x, y);
+            return isInsideOfBoardVertical(x) && isFieldEmptyOnPoint(x, y);
         }
     }
 
-    private boolean isInsideOfBoardHorizontal(int x, int y) {
+    private boolean isInsideOfBoardHorizontal(int y) {
         int nextPartOfSnake = snake.getHead().y + y;
-        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !isPartOfSnakeOnPoint(x, y);
+        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39);
     }
 
-    private boolean isInsideOfBoardVertical(int x, int y) {
+    private boolean isInsideOfBoardVertical(int x) {
         int nextPartOfSnake = snake.getHead().x + x;
-        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39) && !isPartOfSnakeOnPoint(x, y);
+        return (0 <= nextPartOfSnake && nextPartOfSnake <= 39);
     }
 
-    private boolean isPartOfSnakeOnPoint(int x, int y) {
-        return snake.getParts().stream().anyMatch(point -> point.equals(
+    private boolean isFieldEmptyOnPoint(int x, int y) {
+        return !snake.getParts().stream().anyMatch(point -> point.equals(
                 new Point(snake.getHead().x + x, snake.getHead().y + y)));
     }
 }
