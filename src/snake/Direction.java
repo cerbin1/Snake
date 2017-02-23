@@ -20,7 +20,7 @@ enum Direction {
     }
 
     private void addNewSnakePart(Snake snake) {
-        Point newSnakeHead = new Point(snake.getHead().x + x, snake.getHead().y + y);
-        snake.setHead(newSnakeHead);
+        Point headAfterMove = new Point(snake.getHead().x + x, snake.getHead().y + y);
+        snake.setHead(headAfterMove);
     }
 }

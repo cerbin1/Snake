@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+import static java.awt.Color.*;
+
 class RenderPanel extends JPanel {
     private List<Point> snakeParts;
     private int color = 0;
@@ -12,7 +14,6 @@ class RenderPanel extends JPanel {
     RenderPanel(List<Point> snakeParts, Point apple) {
         this.snakeParts = snakeParts;
         this.apple = apple;
-        this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(400, 400));
     }
 
@@ -31,13 +32,13 @@ class RenderPanel extends JPanel {
 
     private void drawSnake(Graphics g) {
         snakeParts.forEach(point -> {
-            g.setColor(Color.green);
+            g.setColor(green);
             g.fillRect(point.x * 10, point.y * 10, 10, 10);
         });
     }
 
     private void drawApple(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(red);
         g.fillRect(apple.x * 10, apple.y * 10, 10, 10);
     }
 }
