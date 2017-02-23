@@ -26,8 +26,8 @@ public class Application implements ActionListener, KeyListener {
     private void initializeComponents() {
         int interval = 50;
         timer = new Timer(interval, this);
-        int numberOfSnakePartsOnGameStart = 5;
-        snake = new Snake(numberOfSnakePartsOnGameStart);
+        int numberOfSnakePartsOnStart = 5;
+        snake = new Snake(numberOfSnakePartsOnStart);
         appleGenerator = new AppleGenerator(400, 400);
         renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple());
         gameFrame = new GameFrame(this, renderPanel);
@@ -49,8 +49,6 @@ public class Application implements ActionListener, KeyListener {
     void endGame() {
         timer.stop();
     }
-
-
 
     @Override
     public void keyTyped(KeyEvent e) {
