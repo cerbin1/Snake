@@ -28,7 +28,7 @@ class SnakeMoveValidator {
     }
 
     private boolean isPartOfSnakeOnPoint(int x, int y) {
-        return snake.getSnakeParts().stream().anyMatch(point -> point.equals(
+        return snake.getParts().stream().anyMatch(point -> point.equals(
                 new Point(snake.getHead().x + x, snake.getHead().y + y)));
     }
 }

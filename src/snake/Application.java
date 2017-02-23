@@ -27,7 +27,7 @@ public class Application implements ActionListener, KeyListener {
         timer = new Timer(interval, this);
         snake = new Snake(5);
         appleGenerator = new AppleGenerator(400, 400);
-        renderPanel = new RenderPanel(snake.getSnakeParts(), appleGenerator.getApple());
+        renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple());
         gameFrame = new GameFrame(this, renderPanel);
     }
 
@@ -52,11 +52,11 @@ public class Application implements ActionListener, KeyListener {
     }
 
     private boolean isTailOutOfSnake() {
-        return snake.getSnakeParts().size() > snake.getLength();
+        return snake.getParts().size() > snake.getLength();
     }
 
     private void removeLastPart() {
-        snake.getSnakeParts().remove(0);
+        snake.getParts().remove(0);
     }
 
     @Override

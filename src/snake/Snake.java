@@ -7,7 +7,7 @@ import java.util.List;
 class Snake {
     private Point head = new Point(0, 0);
     private int length;
-    private List<Point> snakeParts = new LinkedList<>();
+    private List<Point> parts = new LinkedList<>();
     private SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(this);
 
     Snake(int length) {
@@ -19,7 +19,7 @@ class Snake {
     }
 
     void addHead() {
-        snakeParts.add(head);
+        parts.add(head);
     }
 
     Point getHead() {
@@ -30,8 +30,8 @@ class Snake {
         return length;
     }
 
-    List<Point> getSnakeParts() {
-        return snakeParts;
+    List<Point> getParts() {
+        return parts;
     }
 
     void increaseLength() {
