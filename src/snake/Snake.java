@@ -26,7 +26,7 @@ class Snake {
         return head;
     }
 
-    int getLength() { // może samo getLength()?
+    private int getLength() { // może samo getLength()?
         return length;
     }
 
@@ -41,4 +41,19 @@ class Snake {
     boolean isAbleToMove(int x, int y) {
         return snakeMoveValidator.isInsideOfBoardVerticalOrHorizontal(x, y);
     }
+
+    void resizeIfNeeded() {
+        if(isLastPartOutOfSnake()) {
+            removeLastPart();
+        }
+    }
+
+    private boolean isLastPartOutOfSnake() {
+        return parts.size() > length;
+    }
+
+    private void removeLastPart() {
+        parts.remove(0);
+    }
+
 }

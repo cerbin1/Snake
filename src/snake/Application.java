@@ -41,23 +41,14 @@ public class Application implements ActionListener, KeyListener {
             appleGenerator.relocateApple();
         }
         direction.move(snake, this);
-
-        if (isTailOutOfSnake()) {
-            removeLastPart();
-        }
+        snake.resizeIfNeeded();
     }
 
     void endGame() {
         timer.stop();
     }
 
-    private boolean isTailOutOfSnake() {
-        return snake.getParts().size() > snake.getLength();
-    }
 
-    private void removeLastPart() {
-        snake.getParts().remove(0);
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {
