@@ -1,4 +1,4 @@
-package snake;
+package View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,12 +6,12 @@ import java.util.List;
 
 import static java.awt.Color.*;
 
-class RenderPanel extends JPanel {
+public class RenderPanel extends JPanel {
     private final List<Point> snakeParts;
     private int color = 0;
     private final Point apple;
 
-    RenderPanel(List<Point> snakeParts, Point apple) {
+    public RenderPanel(List<Point> snakeParts, Point apple) {
         this.snakeParts = snakeParts;
         this.apple = apple;
         this.setPreferredSize(new Dimension(400, 400));

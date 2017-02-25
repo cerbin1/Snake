@@ -1,4 +1,4 @@
-package snake;
+package View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,16 +6,16 @@ import java.awt.event.KeyListener;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-class GameFrame {
+public class GameFrame {
     private final KeyListener keyListener;
     private final RenderPanel renderPanel;
 
-    GameFrame(KeyListener keyListener, RenderPanel renderPanel) {
+    public GameFrame(KeyListener keyListener, RenderPanel renderPanel) {
         this.keyListener = keyListener;
         this.renderPanel = renderPanel;
     }
 
-    void display() {
+    public void display() {
         JFrame jFrame = createJFrame();
         jFrame.add(renderPanel);
         jFrame.pack();
