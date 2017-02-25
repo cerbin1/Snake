@@ -18,6 +18,7 @@ class Application implements ActionListener, KeyListener {
     private Timer timer;
 
     private Snake snake;
+
     Application() {
         initializeComponents();
         gameFrame.display();
@@ -69,6 +70,7 @@ class Application implements ActionListener, KeyListener {
         int keyCode = e.getKeyCode();
         if (keyCode == VK_SPACE) {
             timer.toggle();
+            return;
         }
 
         Direction direction = Direction.fromKeyCode(keyCode);
