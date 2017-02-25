@@ -35,7 +35,7 @@ class Snake {
     }
 
     boolean isAbleToMove(int x, int y) {
-        return snakeMoveValidator.isInsideOfBoardVerticalOrHorizontal(x, y);
+        return snakeMoveValidator.isMoveValid(x, y);
     }
 
     void resizeIfNeeded() {
