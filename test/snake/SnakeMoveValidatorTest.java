@@ -85,6 +85,6 @@ public class SnakeMoveValidatorTest {
         boolean validator = snakeMoveValidator.isMoveValid(0, 0);
 
         // then
-        assertTrue(validator);
+        assertFalse(validator);
     }
 }
