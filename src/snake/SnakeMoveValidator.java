@@ -11,7 +11,7 @@ class SnakeMoveValidator {
 
     boolean isMoveValid(int x, int y) {
         Point newHead = new Point(snake.getHead());
-        newHead.move(x, y);
+        newHead.move(snake.getHead().x + x, snake.getHead().y + y);
 
         return isPointInBoard(newHead) && isFieldEmptyOnPoint(newHead);
     }
