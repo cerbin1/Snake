@@ -8,10 +8,11 @@ class Snake {
     private Point head = new Point(0, 0);
     private int length;
     private final List<Point> parts = new LinkedList<>();
-    private final SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(this);
+    private final SnakeMoveValidator snakeMoveValidator;
 
-    Snake(int length) {
+    Snake(int length, Size size) {
         this.length = length;
+        this.snakeMoveValidator = new SnakeMoveValidator(this, size);
     }
 
     void setHead(Point head) {

@@ -4,9 +4,12 @@ import java.awt.*;
 
 class SnakeMoveValidator {
     private final Snake snake;
+    private int rightEdge, bottomEdge;
 
-    SnakeMoveValidator(Snake snake) {
+    SnakeMoveValidator(Snake snake, Size size) {
         this.snake = snake;
+        rightEdge = size.getX() - 1;
+        bottomEdge = size.getY() - 1;
     }
 
     boolean isMoveValid(int x, int y) {
@@ -17,7 +20,7 @@ class SnakeMoveValidator {
     }
 
     private boolean isPointInBoard(Point newHead) {
-        return new Rectangle(0, 0, 39, 39).contains(newHead);
+        return new Rectangle(0, 0, rightEdge, bottomEdge).contains(newHead);
     }
 
     private boolean isFieldEmptyOnPoint(Point newHead) {

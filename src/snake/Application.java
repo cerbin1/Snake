@@ -17,6 +17,7 @@ class Application implements ActionListener, KeyListener {
     private Direction direction = DOWN;
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
+    private Size size;
 
     private Timer timer;
 
@@ -29,13 +30,14 @@ class Application implements ActionListener, KeyListener {
     }
 
     private void initializeComponents() {
+        size = new Size(40, 40);
         int interval = 50;
         timer = new Timer(interval, this);
         int numberOfSnakePartsOnStart = 5;
-        snake = new Snake(numberOfSnakePartsOnStart);
-        appleGenerator = new AppleGenerator(400, 400);
-        renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple());
-        gameFrame = new GameFrame(this, renderPanel);
+        snake = new Snake(numberOfSnakePartsOnStart, size);
+        appleGenerator = new AppleGenerator(size);
+        renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple(), size);
+        gameFrame = new GameFrame(this, renderPanel, size);
     }
 
     @Override

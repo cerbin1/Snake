@@ -1,5 +1,7 @@
 package View;
 
+import snake.Size;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -10,11 +12,14 @@ public class RenderPanel extends JPanel {
     private final List<Point> snakeParts;
     private int color = 0;
     private final Point apple;
+    private int width, height;
 
-    public RenderPanel(List<Point> snakeParts, Point apple) {
+    public RenderPanel(List<Point> snakeParts, Point apple, Size size) {
         this.snakeParts = snakeParts;
         this.apple = apple;
-        this.setPreferredSize(new Dimension(400, 400));
+        this.width = size.getX() * 10;
+        this.height = size.getY() * 10;
+        this.setPreferredSize(new Dimension(width, height));
     }
 
     public void paint(Graphics g) {
@@ -25,9 +30,9 @@ public class RenderPanel extends JPanel {
     }
 
     private void drawBoard(Graphics g) {
-        g.drawRect(0, 0, 400, 400);
+        g.drawRect(0, 0, width, height);
         g.setColor(new Color(color));
-        g.fillRect(0, 0, 400, 400);
+        g.fillRect(0, 0, width, height);
     }
 
     private void drawSnake(Graphics g) {

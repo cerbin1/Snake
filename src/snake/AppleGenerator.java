@@ -9,9 +9,9 @@ class AppleGenerator {
     private final int bottomEdge;
     private final int rightEdge;
 
-    AppleGenerator(int width, int height) {
-        rightEdge = width / 10 - 2;
-        bottomEdge = height / 10 - 2;
+    AppleGenerator(Size size) {
+        rightEdge = size.getX() - 2;
+        bottomEdge = size.getY() - 2;
         apple = getRandomPoint();
     }
 
