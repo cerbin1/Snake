@@ -10,77 +10,81 @@ public class SnakeMoveValidatorTest {
     private int lengthOfSnake = 10;
 
     @Test
-    public void shouldSnakeWMoveWhenNextMoveNotExceedBoard() {
+    public void shouldSnakeWMoveWhenAfterMoveIsInBoard() {
         // given
         Snake snake = new Snake(lengthOfSnake);
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
 
         // when
-        snake.setHead(new Point(4, 2));
+        boolean validator = snakeMoveValidator.isMoveValid(4, 7);
 
         // then
-        assertEquals(snakeMoveValidator.isInsideOfBoardHorizontal(4), true);
-        assertEquals(snakeMoveValidator.isInsideOfBoardVertical(15), true);
+        assertTrue(validator);
     }
 
     @Test
-    public void shouldSnakeMoveWhenNextMoveIsOnBorderOfBoard() {
+    public void shouldSnakeMoveWhenNextMoveExceedBottomBorder() {
         // given
         Snake snake = new Snake(lengthOfSnake);
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
 
         // when
-        snake.setHead(new Point(-5, 55));
+        boolean validator = snakeMoveValidator.isMoveValid(50, 0);
 
         // then
-        assertEquals(snakeMoveValidator.isInsideOfBoardVertical(5), true);
-        assertEquals(snakeMoveValidator.isInsideOfBoardVertical(44), true);
-        assertEquals(snakeMoveValidator.isInsideOfBoardHorizontal(-16), true);
-        assertEquals(snakeMoveValidator.isInsideOfBoardHorizontal(-55), true);
+        assertFalse(validator);
     }
 
     @Test
-    public void shouldSnakeWMoveWhenNextMoveExceedBoard() {
+    public void shouldSnakeMoveWhenNextMoveExceedTopBorder() {
         // given
         Snake snake = new Snake(lengthOfSnake);
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
 
         // when
-        snake.setHead(new Point(0, 0));
+        boolean validator = snakeMoveValidator.isMoveValid(-12, 0);
 
         // then
-        assertEquals(snakeMoveValidator.isInsideOfBoardVertical(-5), false);
-        assertEquals(snakeMoveValidator.isInsideOfBoardVertical(154), false);
-        assertEquals(snakeMoveValidator.isInsideOfBoardHorizontal(-23), false);
-        assertEquals(snakeMoveValidator.isInsideOfBoardHorizontal(192), false);
+        assertFalse(validator);
     }
 
     @Test
-    public void shouldSnakeMoveWhenConflictOnNextMove() {
+    public void shouldSnakeMoveWhenNextMoveExceedRightBorder() {
+        // given
+        Snake snake = new Snake(lengthOfSnake);
+        SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
+
+        // when
+        boolean validator = snakeMoveValidator.isMoveValid(0, 60);
+
+        // then
+        assertFalse(validator);
+    }
+
+    @Test
+    public void shouldSnakeMoveWhenNextMoveExceedLeftBorder() {
+        // given
+        Snake snake = new Snake(lengthOfSnake);
+        SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
+
+        // when
+        boolean validator = snakeMoveValidator.isMoveValid(0, -5);
+
+        // then
+        assertFalse(validator);
+    }
+
+    @Test
+    public void shouldSnakeWMoveWhenNextMoveConflictWithTail() {
         // given
         Snake snake = new Snake(lengthOfSnake);
         snake.addHead();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
 
         // when
-        snake.setHead(new Point(10, 15));
-        snake.addHead();
+        boolean validator = snakeMoveValidator.isMoveValid(0, 0);
 
         // then
-        assertEquals(snakeMoveValidator.isNextFieldEmpty(-10, -15), false);
-    }
-
-    @Test
-    public void shouldSnakeMoveWhenNextFieldIsEmpty() {
-        // given
-        Snake snake = new Snake(lengthOfSnake);
-        SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake);
-
-        // when
-        snake.setHead(new Point(2, 2));
-        snake.addHead();
-
-        // then
-        assertEquals(snakeMoveValidator.isNextFieldEmpty(1, 1), true);
+        assertTrue(validator);
     }
 }
