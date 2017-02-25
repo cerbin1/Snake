@@ -2,12 +2,11 @@ package snake;
 
 import org.junit.Test;
 
-import java.awt.*;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class SnakeMoveValidatorTest {
-    private int lengthOfSnake = 10;
+    private final int lengthOfSnake = 10;
 
     @Test
     public void shouldSnakeWMoveWhenAfterMoveIsInBoard() {
