@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.KeyEvent.VK_SPACE;
 import static javax.swing.SwingUtilities.invokeLater;
-import static snake.Direction.*;
+import static snake.Direction.DOWN;
 
 class Application implements ActionListener, KeyListener {
     private RenderPanel renderPanel;
@@ -70,17 +70,10 @@ class Application implements ActionListener, KeyListener {
         if (keyCode == VK_SPACE) {
             timer.toggle();
         }
-        if (keyCode == VK_DOWN && direction != UP) { // z tymi czterema trzeba coś zrobić
-            direction = DOWN;                       // może by corobić metodę direction.opposite() ?
-        }
-        if (keyCode == VK_UP && direction != DOWN) {
-            direction = UP;
-        }
-        if (keyCode == VK_LEFT && direction != RIGHT) {
-            direction = LEFT;
-        }
-        if (keyCode == VK_RIGHT && direction != LEFT) {
-            direction = RIGHT;
+
+        Direction direction = Direction.fromKeyCode(keyCode);
+        if (!direction.isOpposite(this.direction)) {
+            this.direction = direction;
         }
     }
 
