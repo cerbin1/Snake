@@ -1,7 +1,12 @@
 package snake;
 
 public class Size {
-    private final int x;
+    private final int x, y;
+
+    Size(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public int getX() {
         return x;
@@ -9,12 +14,5 @@ public class Size {
 
     public int getY() {
         return y;
-    }
-
-    private final int y;
-
-    Size(int x, int y) {
-        this.x = x;
-        this.y = y;
     }
 }
