@@ -11,7 +11,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class GameFrame {
     private final KeyListener keyListener;
     private final RenderPanel renderPanel;
-    private int width, height;
+    private final int width, height;
 
     public GameFrame(KeyListener keyListener, RenderPanel renderPanel, Size size) {
         this.keyListener = keyListener;

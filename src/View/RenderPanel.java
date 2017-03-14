@@ -10,9 +10,9 @@ import static java.awt.Color.*;
 
 public class RenderPanel extends JPanel {
     private final List<Point> snakeParts;
-    private int color = 0;
     private final Point apple;
-    private int width, height;
+    private final int width, height;
+    private int color = 0;
 
     public RenderPanel(List<Point> snakeParts, Point apple, Size size) {
         this.snakeParts = snakeParts;

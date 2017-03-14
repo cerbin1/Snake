@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SnakeMoveValidatorTest {
     private final int lengthOfSnake = 10;
-    private Size size = new Size(40, 40);
+    private final Size size = new Size(40, 40);
 
     @Test
     public void shouldSnakeWMoveWhenAfterMoveIsInBoard() {

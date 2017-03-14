@@ -4,7 +4,7 @@ import java.awt.*;
 
 class SnakeMoveValidator {
     private final Snake snake;
-    private int rightEdge, bottomEdge;
+    private final int rightEdge, bottomEdge;
 
     SnakeMoveValidator(Snake snake, Size size) {
         this.snake = snake;
