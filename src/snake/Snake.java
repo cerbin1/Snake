@@ -5,10 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Snake {
-    private Point head = new Point(0, 0);
-    private int length;
     private final List<Point> parts = new LinkedList<>();
     private final SnakeMoveValidator snakeMoveValidator;
+    private Point head = new Point(0, 0);
+    private int length;
 
     Snake(int length, Size size) {
         this.length = length;
@@ -36,7 +36,7 @@ class Snake {
     }
 
     boolean isAbleToMove(int x, int y) {
-        return snakeMoveValidator.isMoveValid(x, y);
+        return snakeMoveValidator.isValid(x, y);
     }
 
     void resizeIfNeeded() {

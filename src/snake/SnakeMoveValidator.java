@@ -12,7 +12,7 @@ class SnakeMoveValidator {
         bottomEdge = size.getY() - 1;
     }
 
-    boolean isMoveValid(int x, int y) {
+    boolean isValid(int x, int y) {
         Point newHead = new Point(snake.getHead());
         newHead.move(snake.getHead().x + x, snake.getHead().y + y);
 

@@ -16,7 +16,7 @@ public class SnakeMoveValidatorTest {
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
-        boolean valid = snakeMoveValidator.isMoveValid(4, 7);
+        boolean valid = snakeMoveValidator.isValid(4, 7);
 
         // then
         assertTrue(valid);
@@ -29,7 +29,7 @@ public class SnakeMoveValidatorTest {
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
-        boolean valid = snakeMoveValidator.isMoveValid(50, 0);
+        boolean valid = snakeMoveValidator.isValid(50, 0);
 
         // then
         assertFalse(valid);
@@ -42,7 +42,7 @@ public class SnakeMoveValidatorTest {
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
-        boolean valid = snakeMoveValidator.isMoveValid(-12, 0);
+        boolean valid = snakeMoveValidator.isValid(-12, 0);
 
         // then
         assertFalse(valid);
@@ -55,7 +55,7 @@ public class SnakeMoveValidatorTest {
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
-        boolean valid = snakeMoveValidator.isMoveValid(0, 60);
+        boolean valid = snakeMoveValidator.isValid(0, 60);
 
         // then
         assertFalse(valid);
@@ -68,7 +68,7 @@ public class SnakeMoveValidatorTest {
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
-        boolean valid = snakeMoveValidator.isMoveValid(0, -5);
+        boolean valid = snakeMoveValidator.isValid(0, -5);
 
         // then
         assertFalse(valid);
@@ -82,7 +82,7 @@ public class SnakeMoveValidatorTest {
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
-        boolean valid = snakeMoveValidator.isMoveValid(0, 0);
+        boolean valid = snakeMoveValidator.isValid(0, 0);
 
         // then
         assertFalse(valid);
