@@ -48,7 +48,9 @@ class Application implements ActionListener, KeyListener {
             snake.increaseLength();
             appleGenerator.relocateApple();
         }
-        direction.move(snake, this);
+        if(!direction.move(snake)) {
+            endGame();
+        }
         snake.resizeIfNeeded();
     }
 

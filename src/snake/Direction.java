@@ -16,11 +16,12 @@ enum Direction {
         this.keyCode = keyCode;
     }
 
-    public void move(Snake snake, Application application) {
+    public boolean move(Snake snake) {
         if (snake.isAbleToMove(x, y)) {
             addNewSnakePart(snake);
+            return true;
         } else {
-            application.endGame();
+            return false;
         }
     }
 
