@@ -32,10 +32,8 @@ class Application implements ActionListener, KeyListener {
 
     private void initializeComponents() {
         size = new Size(40, 40);
-        int interval = 50;
-        timer = new Timer(interval, this);
-        int numberOfSnakePartsOnStart = 5;
-        snake = new Snake(numberOfSnakePartsOnStart, size);
+        timer = new Timer(50, this);
+        snake = new Snake(5, size);
         appleGenerator = new AppleGenerator(size);
         renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple(), size);
         gameFrame = new GameFrame(this, renderPanel, size);
@@ -83,7 +81,6 @@ class Application implements ActionListener, KeyListener {
         }
         if (isDirection(keyCode)) {
             Direction direction = fromKeyCode(keyCode);
-            System.out.println(direction);
             if (!direction.isOpposite(this.direction)) {
                 this.direction = direction;
             }
