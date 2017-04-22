@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import static java.awt.event.KeyEvent.VK_ESCAPE;
 import static java.awt.event.KeyEvent.VK_SPACE;
 import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
-import static snake.Direction.DOWN;
 
 class Application implements ActionListener, KeyListener {
     private RenderPanel renderPanel;
@@ -74,6 +74,9 @@ class Application implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
+        if (keyCode == VK_ESCAPE) {
+            System.exit(0);
+        }
         if (keyCode == VK_SPACE) {
             timer.toggle();
             return;
