@@ -12,7 +12,7 @@ public class SnakeMoveValidatorTest {
     @Test
     public void shouldSnakeWMoveWhenAfterMoveIsInBoard() {
         // given
-        Snake snake = new Snake(lengthOfSnake, size);
+        Snake snake = snake();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
@@ -22,10 +22,14 @@ public class SnakeMoveValidatorTest {
         assertTrue(valid);
     }
 
+    private static Snake snake() {
+        return new Snake(10, new Size(40, 40));
+    }
+
     @Test
     public void shouldSnakeMoveWhenNextMoveExceedBottomBorder() {
         // given
-        Snake snake = new Snake(lengthOfSnake, size);
+        Snake snake = snake();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
@@ -38,7 +42,7 @@ public class SnakeMoveValidatorTest {
     @Test
     public void shouldSnakeMoveWhenNextMoveExceedTopBorder() {
         // given
-        Snake snake = new Snake(lengthOfSnake, size);
+        Snake snake = snake();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
@@ -51,7 +55,7 @@ public class SnakeMoveValidatorTest {
     @Test
     public void shouldSnakeMoveWhenNextMoveExceedRightBorder() {
         // given
-        Snake snake = new Snake(lengthOfSnake, size);
+        Snake snake = snake();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
@@ -64,7 +68,7 @@ public class SnakeMoveValidatorTest {
     @Test
     public void shouldSnakeMoveWhenNextMoveExceedLeftBorder() {
         // given
-        Snake snake = new Snake(lengthOfSnake, size);
+        Snake snake = snake();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
         // when
@@ -77,7 +81,7 @@ public class SnakeMoveValidatorTest {
     @Test
     public void shouldSnakeWMoveWhenNextMoveConflictWithTail() {
         // given
-        Snake snake = new Snake(lengthOfSnake, size);
+        Snake snake = snake();
         snake.addHead();
         SnakeMoveValidator snakeMoveValidator = new SnakeMoveValidator(snake, size);
 
