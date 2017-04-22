@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.VK_SPACE;
 import static javax.swing.SwingUtilities.invokeLater;
+import static snake.Direction.*;
 import static snake.Direction.DOWN;
 
 class Application implements ActionListener, KeyListener {
@@ -77,10 +78,12 @@ class Application implements ActionListener, KeyListener {
             timer.toggle();
             return;
         }
-
-        Direction direction = Direction.fromKeyCode(keyCode);
-        if (!direction.isOpposite(this.direction)) {
-            this.direction = direction;
+        if (isDirection(keyCode)) {
+            Direction direction = fromKeyCode(keyCode);
+            System.out.println(direction);
+            if (!direction.isOpposite(this.direction)) {
+                this.direction = direction;
+            }
         }
     }
 

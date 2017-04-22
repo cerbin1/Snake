@@ -39,4 +39,8 @@ enum Direction {
                 .findAny()
                 .get();
     }
+
+    public static boolean isDirection(int keyEvent) {
+        return stream(values()).anyMatch(direction -> direction.keyCode == keyEvent);
+    }
 }
