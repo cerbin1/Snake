@@ -1,9 +1,16 @@
 package snake;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import java.util.NoSuchElementException;
 
 public class DirectionTest {
+    public @Rule
+    ExpectedException expectedException = ExpectedException.none();
+
     @Test
     public void isDownMoveCorrect() {
         // before
@@ -110,5 +117,13 @@ public class DirectionTest {
 
         // then
         Assert.assertEquals(Direction.RIGHT, direction);
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenGettingUnexistingDirectionFromKeyCode() {
+        expectedException.expect(NoSuchElementException.class);
+
+        // when
+        Direction.fromKeyCode(50);
     }
 }
