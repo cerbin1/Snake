@@ -7,11 +7,8 @@ import static org.junit.Assert.*;
 public class TimerTest {
     @Test
     public void shouldStopAfterToggleWhileRunning() {
-        // given
-        Application app;
-
         // when
-        app = new Application();
+        Application app = new Application();
         app.endGame();
 
         // then
@@ -20,11 +17,8 @@ public class TimerTest {
 
     @Test
     public void shouldStartAfterToggleWhenStopped() {
-        // given
-        Application app;
-
         // when
-        app = new Application();
+        Application app = new Application();
 
         // then
         assertEquals(app.getTimer().isRunning(), true);
