@@ -14,15 +14,14 @@ import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
 
 class Application implements ActionListener, KeyListener {
+    private Timer timer;
+    private Snake snake;
+
     private RenderPanel renderPanel;
     private Direction direction = DOWN;
     private AppleGenerator appleGenerator;
     private GameFrame gameFrame;
-    private Size size;
 
-    private Timer timer;
-
-    private Snake snake;
 
     Application() {
         initializeComponents();
@@ -31,7 +30,8 @@ class Application implements ActionListener, KeyListener {
     }
 
     private void initializeComponents() {
-        size = new Size(40, 40);
+        Size size = new Size(40, 40);
+
         timer = new Timer(50, this);
         snake = new Snake(5, size);
         appleGenerator = new AppleGenerator(size);
@@ -48,7 +48,7 @@ class Application implements ActionListener, KeyListener {
             snake.increaseLength();
             appleGenerator.relocateApple();
         }
-        if(!direction.move(snake)) {
+        if (!direction.move(snake)) {
             endGame();
         }
         snake.resizeIfNeeded();

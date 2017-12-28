@@ -8,8 +8,8 @@ class SnakeMoveValidator {
 
     SnakeMoveValidator(Snake snake, Size size) {
         this.snake = snake;
-        rightEdge = size.getX() - 1;
-        bottomEdge = size.getY() - 1;
+        rightEdge = size.getWith() - 1;
+        bottomEdge = size.getHeight() - 1;
     }
 
     boolean isValid(int x, int y) {

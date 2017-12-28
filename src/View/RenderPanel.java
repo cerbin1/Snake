@@ -17,28 +17,28 @@ public class RenderPanel extends JPanel {
     public RenderPanel(List<Point> snakeParts, Point apple, Size size) {
         this.snakeParts = snakeParts;
         this.apple = apple;
-        this.width = size.getX() * 10;
-        this.height = size.getY() * 10;
+        this.width = size.getWith() * 10;
+        this.height = size.getHeight() * 10;
         this.setPreferredSize(new Dimension(width, height));
     }
 
     public void paint(Graphics g) {
-        drawBoard(g);
+        drawGameBoard(g);
         drawSnake(g);
         drawApple(g);
         color++;
     }
 
-    private void drawBoard(Graphics g) {
+    private void drawGameBoard(Graphics g) {
         g.drawRect(0, 0, width, height);
         g.setColor(new Color(color));
         g.fillRect(0, 0, width, height);
     }
 
     private void drawSnake(Graphics g) {
-        snakeParts.forEach(point -> {
+        snakeParts.forEach(position -> {
             g.setColor(green);
-            g.fillRect(point.x * 10, point.y * 10, 10, 10);
+            g.fillRect(position.x * 10, position.y * 10, 10, 10);
         });
     }
 

@@ -16,8 +16,8 @@ public class GameFrame {
     public GameFrame(KeyListener keyListener, RenderPanel renderPanel, Size size) {
         this.keyListener = keyListener;
         this.renderPanel = renderPanel;
-        this.width = size.getX() * 10;
-        this.height = size.getY() * 10;
+        this.width = size.getWith() * 10;
+        this.height = size.getHeight() * 10;
     }
 
     public void display() {

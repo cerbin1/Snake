@@ -1,18 +1,18 @@
 package snake;
 
 public class Size {
-    private final int x, y;
+    private final int with, height;
 
-    Size(int x, int y) {
-        this.x = x;
-        this.y = y;
+    Size(int with, int height) {
+        this.with = with;
+        this.height = height;
     }
 
-    public int getX() {
-        return x;
+    public int getWith() {
+        return with;
     }
 
-    public int getY() {
-        return y;
+    public int getHeight() {
+        return height;
     }
 }
