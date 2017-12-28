@@ -1,6 +1,7 @@
 package snake;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Random;
 
 class AppleGenerator {
@@ -27,7 +28,17 @@ class AppleGenerator {
         return random.nextInt(maxNumber);
     }
 
-    void relocateApple() {
-        apple.setLocation(getRandomNumberNotExceeding(bottomEdge), getRandomNumberNotExceeding(rightEdge));
+    void relocateApple(List<Point> snakeParts) {
+        while (true) {
+            Point applePosition = getRandomPoint();
+            if (isAppleNotGeneratedOnSnake(snakeParts, applePosition)) {
+                apple.setLocation(getRandomNumberNotExceeding(bottomEdge), getRandomNumberNotExceeding(rightEdge));
+                break;
+            }
+        }
+    }
+
+    private boolean isAppleNotGeneratedOnSnake(List<Point> snakeParts, Point applePosition) {
+        return snakeParts.stream().noneMatch(point -> point.equals(applePosition));
     }
 }

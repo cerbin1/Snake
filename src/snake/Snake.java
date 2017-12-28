@@ -33,7 +33,7 @@ class Snake {
             parts.add(newHead);
             if (isAppleReachedBySnake()) {
                 increaseLength();
-                appleGenerator.relocateApple();
+                appleGenerator.relocateApple(parts);
             }
             if (parts.size() > length) {
                 parts.remove(0);
