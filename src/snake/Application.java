@@ -23,7 +23,7 @@ class Application implements ActionListener, KeyListener {
 
     private boolean ended;
 
-    Application() {
+    private Application() {
         runApplication();
     }
 
@@ -49,16 +49,12 @@ class Application implements ActionListener, KeyListener {
         snake.moveTo(direction);
         if (snake.isDead()) {
             endGame();
-            ended = true;
         }
     }
 
-    void endGame() {
+    private void endGame() {
         timer.stop();
-    }
-
-    Timer getTimer() {
-        return timer;
+        ended = true;
     }
 
     @Override
