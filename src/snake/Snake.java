@@ -31,7 +31,7 @@ class Snake {
         Point newHead = getPositionOfNewHeadAfterMove(direction);
         if (moveValidator.isMoveValidTo(newHead)) {
             parts.add(newHead);
-            if (isAppleReachedBySnake()) {
+            if (isAppleReached()) {
                 increaseLength();
                 appleGenerator.relocateApple(parts);
             }
@@ -48,7 +48,7 @@ class Snake {
         return new Point(oldHead.x + direction.getX(), oldHead.y + direction.getY());
     }
 
-    private boolean isAppleReachedBySnake() {
+    private boolean isAppleReached() {
         return parts.get(parts.size() - 1).equals(appleGenerator.getApple());
     }
 
