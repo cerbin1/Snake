@@ -14,14 +14,6 @@ enum Direction {
         this.keyCode = keyCode;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     public boolean isOpposite(Direction direction) {
         return direction.x == -x && direction.y == -y;
     }
@@ -35,5 +27,13 @@ enum Direction {
 
     public static boolean isDirection(int keyEvent) {
         return stream(values()).anyMatch(direction -> direction.keyCode == keyEvent);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

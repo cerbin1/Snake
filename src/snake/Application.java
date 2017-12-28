@@ -46,7 +46,7 @@ class Application implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         renderPanel.repaint();
-        snake.move(direction);
+        snake.moveTo(direction);
         if (snake.isDead()) {
             endGame();
             ended = true;

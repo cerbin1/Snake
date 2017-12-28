@@ -27,38 +27,30 @@ class Snake {
         return parts;
     }
 
-    private boolean isLastPartOutOfSnake() {
-        return parts.size() > length;
-    }
-
-    private void removeLastPart() {
-        parts.remove(0);
-    }
-
-    public void move(Direction direction) {
-        Point newHead = getNewHead(direction.getX(), direction.getY());
-        if (moveValidator.isValidMoveTo(newHead)) {
+    public void moveTo(Direction direction) {
+        Point newHead = getPositionOfNewHeadAfterMove(direction);
+        if (moveValidator.isMoveValidTo(newHead)) {
             parts.add(newHead);
             if (isAppleReachedBySnake()) {
                 increaseLength();
                 appleGenerator.relocateApple();
             }
-            if (isLastPartOutOfSnake()) {
-                removeLastPart();
+            if (parts.size() > length) {
+                parts.remove(0);
             }
         } else {
             dead = true;
         }
     }
 
-    private Point getNewHead(int x, int y) {
-        return new Point(parts.get(parts.size() - 1).x + x, parts.get(parts.size() - 1).y + y);
+    private Point getPositionOfNewHeadAfterMove(Direction direction) {
+        Point oldHead = parts.get(parts.size() - 1);
+        return new Point(oldHead.x + direction.getX(), oldHead.y + direction.getY());
     }
 
     private boolean isAppleReachedBySnake() {
         return parts.get(parts.size() - 1).equals(appleGenerator.getApple());
     }
-
 
     private void increaseLength() {
         length += 1;

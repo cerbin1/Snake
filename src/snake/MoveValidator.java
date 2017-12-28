@@ -13,7 +13,7 @@ class MoveValidator {
         bottomEdge = size.getHeight() - 1;
     }
 
-    boolean isValidMoveTo(Point newHead) {
+    boolean isMoveValidTo(Point newHead) {
         return isInBoard(newHead) && isPointEmptyOn(newHead);
     }
 

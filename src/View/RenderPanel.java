@@ -13,7 +13,7 @@ public class RenderPanel extends JPanel {
     private final List<Point> snakeParts;
     private final Point apple;
     private final int width, height;
-    private int color = 0;
+    private int colorValue = 0;
 
     public RenderPanel(List<Point> snakeParts, Point apple, Size size) {
         this.snakeParts = snakeParts;
@@ -27,12 +27,12 @@ public class RenderPanel extends JPanel {
         drawGameBoard(g);
         drawSnake(g);
         drawApple(g);
-        color++;
+        colorValue++;
     }
 
     private void drawGameBoard(Graphics g) {
         g.drawRect(0, 0, width, height);
-        g.setColor(new Color(color));
+        g.setColor(new Color(colorValue));
         g.fillRect(0, 0, width, height);
     }
 
