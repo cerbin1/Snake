@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-import static java.awt.Color.*;
+import static java.awt.Color.green;
+import static java.awt.Color.red;
 
 public class RenderPanel extends JPanel {
     private final List<Point> snakeParts;
