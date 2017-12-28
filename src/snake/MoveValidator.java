@@ -9,8 +9,8 @@ class MoveValidator {
 
     MoveValidator(List<Point> snakeParts, Size size) {
         this.snakeParts = snakeParts;
-        rightEdge = size.getWith() - 1;
-        bottomEdge = size.getHeight() - 1;
+        rightEdge = size.getWith();
+        bottomEdge = size.getHeight();
     }
 
     boolean isMoveValidTo(Point newHead) {
