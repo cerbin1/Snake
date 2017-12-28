@@ -56,7 +56,7 @@ class Snake {
     }
 
     private boolean isAppleReachedBySnake() {
-        return parts.get(0).equals(appleGenerator.getApple());
+        return parts.get(parts.size() - 1).equals(appleGenerator.getApple());
     }
 
 
