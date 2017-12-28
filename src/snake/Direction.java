@@ -1,7 +1,5 @@
 package snake;
 
-import java.awt.*;
-
 import static java.awt.event.KeyEvent.*;
 import static java.util.Arrays.stream;
 
@@ -16,18 +14,12 @@ enum Direction {
         this.keyCode = keyCode;
     }
 
-    public boolean move(Snake snake) {
-        if (snake.isAbleToMove(x, y)) {
-            addNewSnakePart(snake);
-            return true;
-        } else {
-            return false;
-        }
+    public int getX() {
+        return x;
     }
 
-    private void addNewSnakePart(Snake snake) {
-        Point headAfterMove = new Point(snake.getHead().x + x, snake.getHead().y + y);
-        snake.setHead(headAfterMove);
+    public int getY() {
+        return y;
     }
 
     public boolean isOpposite(Direction direction) {

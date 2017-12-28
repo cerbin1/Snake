@@ -6,43 +6,25 @@ import java.util.List;
 
 class Snake {
     private final List<Point> parts = new LinkedList<>();
-    private final SnakeMoveValidator snakeMoveValidator;
-    private Point head = new Point(0, 0);
+    private final MoveValidator moveValidator;
+    private AppleGenerator appleGenerator;
     private int length;
+    private boolean dead;
 
-    Snake(int length, Size size) {
+    Snake(int length, Size size, AppleGenerator appleGenerator) {
         this.length = length;
-        this.snakeMoveValidator = new SnakeMoveValidator(this, size);
+        this.moveValidator = new MoveValidator(parts, size);
+        this.appleGenerator = appleGenerator;
+        setSnakePosition();
     }
 
-    void setHead(Point head) {
-        this.head = head;
-    }
-
-    void addHead() {
+    private void setSnakePosition() {
+        Point head = new Point(10, 10);
         parts.add(head);
-    }
-
-    Point getHead() {
-        return head;
     }
 
     List<Point> getParts() {
         return parts;
-    }
-
-    void increaseLength() {
-        length += 1;
-    }
-
-    boolean isAbleToMove(int x, int y) {
-        return snakeMoveValidator.isValid(x, y);
-    }
-
-    void resizeIfNeeded() {
-        if (isLastPartOutOfSnake()) {
-            removeLastPart();
-        }
     }
 
     private boolean isLastPartOutOfSnake() {
@@ -53,4 +35,36 @@ class Snake {
         parts.remove(0);
     }
 
+    public void move(Direction direction) {
+        Point newHead = getNewHead(direction.getX(), direction.getY());
+        if (moveValidator.isValidMoveTo(newHead)) {
+            parts.add(newHead);
+            if (isAppleReachedBySnake()) {
+                increaseLength();
+                appleGenerator.relocateApple();
+            }
+            if (isLastPartOutOfSnake()) {
+                removeLastPart();
+            }
+        } else {
+            dead = true;
+        }
+    }
+
+    private Point getNewHead(int x, int y) {
+        return new Point(parts.get(parts.size() - 1).x + x, parts.get(parts.size() - 1).y + y);
+    }
+
+    private boolean isAppleReachedBySnake() {
+        return parts.get(0).equals(appleGenerator.getApple());
+    }
+
+
+    private void increaseLength() {
+        length += 1;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
 }
