@@ -10,7 +10,6 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.VK_ESCAPE;
 import static java.awt.event.KeyEvent.VK_SPACE;
-import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
 
 class Application implements ActionListener, KeyListener {
@@ -22,18 +21,19 @@ class Application implements ActionListener, KeyListener {
     private Direction direction = DOWN;
     private boolean gameEnded;
 
-    private Application() {
-        timer = new Timer(50, this);
-        Size size = new Size(40, 40);
+    Application(int difficulty, int width, int height, int snakeSize) {
+        int refreshRate = Difficulty.values()[difficulty].getDifficulty();
+        timer = new Timer(refreshRate, this);
+        Size size = new Size(width, height);
         AppleGenerator appleGenerator = new AppleGenerator(size);
-        snake = new Snake(5, size, appleGenerator);
+        snake = new Snake(snakeSize, size, appleGenerator);
         renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple(), size);
         gameFrame = new GameFrame(this, renderPanel, size);
-        runApplication();
+        runGame();
     }
 
-    private void runApplication() {
-        gameFrame.display();
+    private void runGame() {
+        gameFrame.show();
         timer.start();
     }
 
@@ -79,9 +79,5 @@ class Application implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
-
-    public static void main(String[] args) {
-        invokeLater(Application::new);
     }
 }

@@ -12,14 +12,17 @@ public class ConfigurationMenuFrame extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         JPanel snakeSizePanel = new JPanel();
         snakeSizePanel.add(new JLabel("Snake size: "));
-        snakeSizePanel.add(new JTextField(3));
+        JTextField snakeSizeTextField = new JTextField("5", 3);
+        snakeSizePanel.add(snakeSizeTextField);
 
 
         JPanel gameBoardSizePanel = new JPanel();
         gameBoardSizePanel.add(new JLabel("Width: "));
-        gameBoardSizePanel.add(new JTextField(4));
+        JTextField gameWidthTextField = new JTextField("40", 4);
+        gameBoardSizePanel.add(gameWidthTextField);
         gameBoardSizePanel.add(new JLabel("Height: "));
-        gameBoardSizePanel.add(new JTextField(4));
+        JTextField gameHeightTextField = new JTextField("40", 4);
+        gameBoardSizePanel.add(gameHeightTextField);
 
         JPanel difficultyPanel = new JPanel();
         difficultyPanel.add(new JLabel("Difficulty: "));
@@ -40,7 +43,11 @@ public class ConfigurationMenuFrame extends JFrame {
         JButton startGameButton = new JButton("Start the Game");
         startGameButton.addActionListener(e -> {
             setVisible(false);
-            new Application();
+            int snakeSize = Integer.parseInt(snakeSizeTextField.getText());
+            int gameBoardWidth = Integer.parseInt(gameWidthTextField.getText());
+            int gameBoardHeight = Integer.parseInt(gameHeightTextField.getText());
+            int difficulty = difficultySlider.getValue();
+            new Application(difficulty, gameBoardWidth, gameBoardHeight, snakeSize);
         });
         buttonsPanel.add(startGameButton);
 
