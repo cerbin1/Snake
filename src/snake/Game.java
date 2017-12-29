@@ -21,7 +21,7 @@ public class Game implements ActionListener, KeyListener {
     private Direction direction = DOWN;
     private boolean gameEnded;
 
-    Game(int difficulty, int width, int height, int snakeSize) {
+    public Game(int difficulty, int width, int height, int snakeSize) {
         int refreshRate = Difficulty.values()[difficulty].getDifficulty();
         timer = new Timer(refreshRate, this);
         Size size = new Size(width, height);

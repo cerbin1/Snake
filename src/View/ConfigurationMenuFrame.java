@@ -1,4 +1,6 @@
-package snake;
+package View;
+
+import snake.Game;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -8,7 +10,7 @@ import static java.awt.event.KeyEvent.VK_ESCAPE;
 
 public class ConfigurationMenuFrame extends JFrame {
 
-    ConfigurationMenuFrame() {
+    public ConfigurationMenuFrame() {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         addElementsToJFrame();
 
