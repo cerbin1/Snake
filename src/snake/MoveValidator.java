@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.List;
 
 class MoveValidator {
-    private final java.util.List<Point> snakeParts;
+    private final List<Point> snakeParts;
     private final int rightEdge, bottomEdge;
 
     MoveValidator(List<Point> snakeParts, Size size) {

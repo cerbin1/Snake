@@ -7,7 +7,7 @@ import java.util.List;
 class Snake {
     private final List<Point> parts = new LinkedList<>();
     private final MoveValidator moveValidator;
-    private AppleGenerator appleGenerator;
+    private final AppleGenerator appleGenerator;
     private int length;
     private boolean dead;
 

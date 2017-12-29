@@ -14,33 +14,27 @@ import static javax.swing.SwingUtilities.invokeLater;
 import static snake.Direction.*;
 
 class Application implements ActionListener, KeyListener {
-    private Timer timer;
-    private Snake snake;
+    private final Timer timer;
+    private final Snake snake;
+    private final RenderPanel renderPanel;
+    private final GameFrame gameFrame;
 
-    private RenderPanel renderPanel;
     private Direction direction = DOWN;
-    private GameFrame gameFrame;
-
-    private boolean ended;
+    private boolean gameEnded;
 
     private Application() {
-        runApplication();
-    }
-
-    private void runApplication() {
-        initializeComponents();
-        gameFrame.display();
-        timer.start();
-    }
-
-    private void initializeComponents() {
         timer = new Timer(50, this);
-
         Size size = new Size(40, 40);
         AppleGenerator appleGenerator = new AppleGenerator(size);
         snake = new Snake(5, size, appleGenerator);
         renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple(), size);
         gameFrame = new GameFrame(this, renderPanel, size);
+        runApplication();
+    }
+
+    private void runApplication() {
+        gameFrame.display();
+        timer.start();
     }
 
     @Override
@@ -54,7 +48,7 @@ class Application implements ActionListener, KeyListener {
 
     private void endGame() {
         timer.stop();
-        ended = true;
+        gameEnded = true;
     }
 
     @Override
@@ -64,7 +58,7 @@ class Application implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!ended) {
+        if (!gameEnded) {
             int keyCode = e.getKeyCode();
             if (keyCode == VK_ESCAPE) {
                 System.exit(0);
