@@ -8,7 +8,7 @@ import static java.awt.event.KeyEvent.VK_ESCAPE;
 
 public class ConfigurationMenuFrame extends JFrame {
 
-    private ConfigurationMenuFrame() {
+    ConfigurationMenuFrame() {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         addElementsToJFrame();
 
@@ -82,7 +82,7 @@ public class ConfigurationMenuFrame extends JFrame {
             int gameBoardWidth = Integer.parseInt(gameWidthTextField.getText());
             int gameBoardHeight = Integer.parseInt(gameHeightTextField.getText());
             int difficulty = difficultySlider.getValue();
-            new Application(difficulty, gameBoardWidth, gameBoardHeight, snakeSize);
+            new Game(difficulty, gameBoardWidth, gameBoardHeight, snakeSize);
         });
         buttonsPanel.add(startGameButton);
 
