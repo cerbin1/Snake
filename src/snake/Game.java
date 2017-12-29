@@ -1,7 +1,7 @@
 package snake;
 
-import View.GameFrame;
-import View.RenderPanel;
+import view.GameFrame;
+import view.RenderPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

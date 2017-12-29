@@ -1,6 +1,6 @@
 package snake;
 
-import View.ConfigurationMenuFrame;
+import view.ConfigurationMenuFrame;
 
 class Application {
     public static void main(String[] args) {
