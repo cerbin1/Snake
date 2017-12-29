@@ -19,7 +19,7 @@ class Snake {
     }
 
     private void setSnakePosition() {
-        Point head = new Point(10, 10);
+        Point head = new Point(0, 0);
         parts.add(head);
     }
 
