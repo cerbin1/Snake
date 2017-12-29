@@ -10,6 +10,41 @@ public class ConfigurationMenuFrame extends JFrame {
 
     private ConfigurationMenuFrame() {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        addElementsToJFrame();
+
+        setSize(400, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(true);
+        setVisible(true);
+        addKeyListener(createKeyListener());
+        pack();
+    }
+
+    private KeyListener createKeyListener() {
+        return new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                if (keyCode == VK_ESCAPE) {
+                    System.exit(0);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+    }
+
+    private void addElementsToJFrame() {
         JPanel snakeSizePanel = new JPanel();
         snakeSizePanel.add(new JLabel("Snake size: "));
         JTextField snakeSizeTextField = new JTextField("5", 3);
@@ -55,33 +90,6 @@ public class ConfigurationMenuFrame extends JFrame {
         add(gameBoardSizePanel);
         add(difficultyPanel);
         add(buttonsPanel);
-
-        setSize(400, 400);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setFocusable(true);
-        setVisible(true);
-        addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int keyCode = e.getKeyCode();
-                if (keyCode == VK_ESCAPE) {
-                    System.exit(0);
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
-        pack();
     }
 
     public static void main(String[] args) {
