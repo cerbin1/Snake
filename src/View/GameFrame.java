@@ -12,18 +12,18 @@ public class GameFrame {
     private final KeyListener keyListener;
     private final RenderPanel renderPanel;
     private final int width, height;
+    private JFrame jFrame;
 
     public GameFrame(KeyListener keyListener, RenderPanel renderPanel, Size size) {
         this.keyListener = keyListener;
         this.renderPanel = renderPanel;
         this.width = size.getWith() * 10;
         this.height = size.getHeight() * 10;
+        jFrame = createJFrame();
     }
 
-    public void display() {
-        JFrame jFrame = createJFrame();
-        jFrame.add(renderPanel);
-        jFrame.pack();
+    public void show() {
+        jFrame.setVisible(true);
     }
 
     private JFrame createJFrame() {
@@ -34,7 +34,8 @@ public class GameFrame {
         frame.setResizable(false);
         frame.addKeyListener(keyListener);
         frame.setFocusable(true);
-        frame.setVisible(true);
+        frame.add(renderPanel);
+        frame.pack();
         return frame;
     }
 }
