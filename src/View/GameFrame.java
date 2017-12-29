@@ -35,7 +35,6 @@ public class GameFrame {
         frame.addKeyListener(keyListener);
         frame.setFocusable(true);
         frame.add(renderPanel);
-        frame.pack();
         return frame;
     }
 }
