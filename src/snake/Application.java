@@ -58,11 +58,11 @@ class Application implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if (keyCode == VK_ESCAPE) {
+            System.exit(0);
+        }
         if (!gameEnded) {
-            int keyCode = e.getKeyCode();
-            if (keyCode == VK_ESCAPE) {
-                System.exit(0);
-            }
             if (keyCode == VK_SPACE) {
                 timer.toggle();
                 return;
