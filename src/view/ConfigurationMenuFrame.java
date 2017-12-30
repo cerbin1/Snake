@@ -20,6 +20,10 @@ public class ConfigurationMenuFrame extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         addElementsToJFrame();
 
+        setFrame();
+    }
+
+    private void setFrame() {
         setSize(400, 400);
         setResizable(false);
         setLocationRelativeTo(null);
