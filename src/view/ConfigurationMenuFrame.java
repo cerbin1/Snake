@@ -122,8 +122,4 @@ public class ConfigurationMenuFrame extends JFrame {
         }
         return gameBoardWidth;
     }
-
-    public static void main(String[] args) {
-        new ConfigurationMenuFrame();
-    }
 }
