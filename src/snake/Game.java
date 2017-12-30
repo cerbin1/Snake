@@ -22,14 +22,18 @@ public class Game implements ActionListener, KeyListener {
     private boolean gameEnded;
 
     public Game(int difficulty, int width, int height, int snakeSize) {
-        int refreshRate = Difficulty.values()[difficulty].getDifficulty();
-        timer = new Timer(refreshRate, this);
+        int interval = getInterval(difficulty);
+        timer = new Timer(interval, this);
         Size size = new Size(width, height);
         AppleGenerator appleGenerator = new AppleGenerator(size);
         snake = new Snake(snakeSize, size, appleGenerator);
         renderPanel = new RenderPanel(snake.getParts(), appleGenerator.getApple(), size);
         gameFrame = new GameFrame(this, renderPanel, size);
         runGame();
+    }
+
+    private int getInterval(int difficulty) {
+        return Difficulty.values()[difficulty].getDifficulty();
     }
 
     private void runGame() {
