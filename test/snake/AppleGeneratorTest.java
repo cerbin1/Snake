@@ -19,7 +19,5 @@ public class AppleGeneratorTest {
 
         //then
         assertNotEquals(previousApplePosition, appleGenerator.getApple());
-        System.out.println(previousApplePosition);
-        System.out.println(appleGenerator.getApple());
     }
 }

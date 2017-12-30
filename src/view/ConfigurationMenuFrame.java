@@ -88,9 +88,7 @@ public class ConfigurationMenuFrame extends JFrame {
         buttonsPanel.add(exitGameButton);
 
         JButton startGameButton = new JButton("Start the Game");
-        startGameButton.addActionListener(e -> {
-            clickStartGameButton();
-        });
+        startGameButton.addActionListener(e -> clickStartGameButton());
         buttonsPanel.add(startGameButton);
 
         add(snakeSizePanel);
