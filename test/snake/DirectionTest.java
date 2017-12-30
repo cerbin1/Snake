@@ -7,6 +7,8 @@ import org.junit.rules.ExpectedException;
 
 import java.util.NoSuchElementException;
 
+import static org.junit.Assert.*;
+
 public class DirectionTest {
     public @Rule
     ExpectedException expectedException = ExpectedException.none();
@@ -19,8 +21,8 @@ public class DirectionTest {
         Direction direction = Direction.DOWN;
 
         // then
-        Assert.assertEquals(0, direction.getX());
-        Assert.assertEquals(1, direction.getY());
+        assertEquals(0, direction.getX());
+        assertEquals(1, direction.getY());
     }
 
     @Test
@@ -31,8 +33,8 @@ public class DirectionTest {
         Direction direction = Direction.UP;
 
         // then
-        Assert.assertEquals(0, direction.getX());
-        Assert.assertEquals(-1, direction.getY());
+        assertEquals(0, direction.getX());
+        assertEquals(-1, direction.getY());
     }
 
     @Test
@@ -43,8 +45,8 @@ public class DirectionTest {
         Direction direction = Direction.LEFT;
 
         // then
-        Assert.assertEquals(-1, direction.getX());
-        Assert.assertEquals(0, direction.getY());
+        assertEquals(-1, direction.getX());
+        assertEquals(0, direction.getY());
     }
 
     @Test
@@ -55,8 +57,8 @@ public class DirectionTest {
         Direction direction = Direction.RIGHT;
 
         // then
-        Assert.assertEquals(1, direction.getX());
-        Assert.assertEquals(0, direction.getY());
+        assertEquals(1, direction.getX());
+        assertEquals(0, direction.getY());
     }
 
     @Test
@@ -68,7 +70,7 @@ public class DirectionTest {
         boolean isOpposite = direction.isOpposite(Direction.UP);
 
         // then
-        Assert.assertTrue(isOpposite);
+        assertTrue(isOpposite);
     }
 
     @Test
@@ -80,7 +82,7 @@ public class DirectionTest {
         boolean isOpposite = direction.isOpposite(Direction.RIGHT);
 
         // then
-        Assert.assertFalse(isOpposite);
+        assertFalse(isOpposite);
     }
 
     @Test
@@ -89,7 +91,7 @@ public class DirectionTest {
         Direction direction = Direction.fromKeyCode(40);
 
         // then
-        Assert.assertEquals(Direction.DOWN, direction);
+        assertEquals(Direction.DOWN, direction);
     }
 
     @Test
@@ -98,7 +100,7 @@ public class DirectionTest {
         Direction direction = Direction.fromKeyCode(38);
 
         // then
-        Assert.assertEquals(Direction.UP, direction);
+        assertEquals(Direction.UP, direction);
     }
 
     @Test
@@ -107,7 +109,7 @@ public class DirectionTest {
         Direction direction = Direction.fromKeyCode(37);
 
         // then
-        Assert.assertEquals(Direction.LEFT, direction);
+        assertEquals(Direction.LEFT, direction);
     }
 
     @Test
@@ -116,7 +118,7 @@ public class DirectionTest {
         Direction direction = Direction.fromKeyCode(39);
 
         // then
-        Assert.assertEquals(Direction.RIGHT, direction);
+        assertEquals(Direction.RIGHT, direction);
     }
 
     @Test
@@ -136,10 +138,10 @@ public class DirectionTest {
         boolean isRightDirection = Direction.isDirection(39);
 
         // then
-        Assert.assertTrue(isDownDirection);
-        Assert.assertTrue(isUpDirection);
-        Assert.assertTrue(isLeftDirection);
-        Assert.assertTrue(isRightDirection);
+        assertTrue(isDownDirection);
+        assertTrue(isUpDirection);
+        assertTrue(isLeftDirection);
+        assertTrue(isRightDirection);
     }
 
     @Test
@@ -148,6 +150,6 @@ public class DirectionTest {
         boolean isNotDirection = Direction.isDirection(100);
 
         // then
-        Assert.assertFalse(isNotDirection);
+        assertFalse(isNotDirection);
     }
 }
