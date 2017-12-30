@@ -3,12 +3,18 @@ package view;
 import snake.Game;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.VK_ESCAPE;
 
 public class ConfigurationMenuFrame extends JFrame {
+
+    private JTextField gameWidthTextField;
+    private JTextField gameHeightTextField;
+    private JSlider difficultySlider;
+    private JTextField snakeSizeTextField;
 
     public ConfigurationMenuFrame() {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -49,22 +55,22 @@ public class ConfigurationMenuFrame extends JFrame {
     private void addElementsToJFrame() {
         JPanel snakeSizePanel = new JPanel();
         snakeSizePanel.add(new JLabel("Snake size: "));
-        JTextField snakeSizeTextField = new JTextField("5", 3);
+        snakeSizeTextField = new JTextField("5", 3);
         snakeSizePanel.add(snakeSizeTextField);
 
 
         JPanel gameBoardSizePanel = new JPanel();
         gameBoardSizePanel.add(new JLabel("Width: "));
-        JTextField gameWidthTextField = new JTextField("40", 4);
+        gameWidthTextField = new JTextField("40", 4);
         gameBoardSizePanel.add(gameWidthTextField);
         gameBoardSizePanel.add(new JLabel("Height: "));
-        JTextField gameHeightTextField = new JTextField("40", 4);
+        gameHeightTextField = new JTextField("40", 4);
         gameBoardSizePanel.add(gameHeightTextField);
 
         JPanel difficultyPanel = new JPanel();
         difficultyPanel.add(new JLabel("Difficulty: "));
 
-        JSlider difficultySlider = new JSlider(0, 10, 5);
+        difficultySlider = new JSlider(0, 10, 5);
         difficultySlider.setMajorTickSpacing(5);
         difficultySlider.setMinorTickSpacing(1);
         difficultySlider.setPaintTicks(true);
@@ -79,12 +85,7 @@ public class ConfigurationMenuFrame extends JFrame {
 
         JButton startGameButton = new JButton("Start the Game");
         startGameButton.addActionListener(e -> {
-            setVisible(false);
-            int snakeSize = Integer.parseInt(snakeSizeTextField.getText());
-            int gameBoardWidth = Integer.parseInt(gameWidthTextField.getText());
-            int gameBoardHeight = Integer.parseInt(gameHeightTextField.getText());
-            int difficulty = difficultySlider.getValue();
-            new Game(difficulty, gameBoardWidth, gameBoardHeight, snakeSize);
+            clickStartGameButton();
         });
         buttonsPanel.add(startGameButton);
 
@@ -92,6 +93,34 @@ public class ConfigurationMenuFrame extends JFrame {
         add(gameBoardSizePanel);
         add(difficultyPanel);
         add(buttonsPanel);
+    }
+
+    private void clickStartGameButton() {
+        int gameBoardWidth = getValueOf(gameWidthTextField);
+        int gameBoardHeight = getValueOf(gameHeightTextField);
+        int snakeSize = getValueOf(snakeSizeTextField);
+        int difficulty = difficultySlider.getValue();
+
+        if (validateConfigurationValues(gameBoardWidth, gameBoardHeight, snakeSize)) {
+            new Game(difficulty, gameBoardWidth, gameBoardHeight, snakeSize);
+            setVisible(false);
+        }
+    }
+
+    private boolean validateConfigurationValues(int gameBoardWidth, int gameBoardHeight, int snakeSize) {
+        return 10 <= gameBoardWidth && gameBoardWidth <= 100 && 10 <= gameBoardHeight && gameBoardHeight <= 100 && 1 <= snakeSize && snakeSize <= gameBoardWidth * gameBoardHeight / 2;
+    }
+
+    private int getValueOf(JTextField textField) {
+        int gameBoardWidth = -1;
+        try {
+            gameBoardWidth = Integer.parseInt(textField.getText());
+            textField.setForeground(Color.black);
+        } catch (NumberFormatException e) {
+            System.err.println("Not a number!");
+            textField.setForeground(Color.red);
+        }
+        return gameBoardWidth;
     }
 
     public static void main(String[] args) {
