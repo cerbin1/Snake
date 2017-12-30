@@ -13,14 +13,14 @@ class AppleGenerator {
     AppleGenerator(Size size) {
         rightEdge = size.getWith() - 2;
         bottomEdge = size.getHeight() - 2;
-        apple = getRandomPoint();
+        apple = getRandomAppleLocation();
     }
 
     Point getApple() {
         return apple;
     }
 
-    private Point getRandomPoint() {
+    private Point getRandomAppleLocation() {
         return new Point(getRandomNumberNotExceeding(bottomEdge), getRandomNumberNotExceeding(rightEdge));
     }
 
@@ -30,7 +30,7 @@ class AppleGenerator {
 
     void relocateApple(List<Point> snakeParts) {
         while (true) {
-            Point applePosition = getRandomPoint();
+            Point applePosition = getRandomAppleLocation();
             if (isAppleNotGeneratedOnSnake(snakeParts, applePosition)) {
                 apple.setLocation(getRandomNumberNotExceeding(bottomEdge), getRandomNumberNotExceeding(rightEdge));
                 break;
