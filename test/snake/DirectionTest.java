@@ -126,4 +126,28 @@ public class DirectionTest {
         // when
         Direction.fromKeyCode(50);
     }
+
+    @Test
+    public void shouldReturnTrueWhenButtonIsDirection() {
+        // when
+        boolean isDownDirection = Direction.isDirection(40);
+        boolean isUpDirection = Direction.isDirection(38);
+        boolean isLeftDirection = Direction.isDirection(37);
+        boolean isRightDirection = Direction.isDirection(39);
+
+        // then
+        Assert.assertTrue(isDownDirection);
+        Assert.assertTrue(isUpDirection);
+        Assert.assertTrue(isLeftDirection);
+        Assert.assertTrue(isRightDirection);
+    }
+
+    @Test
+    public void shouldReturnFalseWhenButtonIsNotDirection() {
+        // when
+        boolean isNotDirection = Direction.isDirection(100);
+
+        // then
+        Assert.assertFalse(isNotDirection);
+    }
 }
